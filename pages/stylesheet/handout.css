@@ -1,0 +1,50 @@
+.qtnHt{
+    background-color: #a397e2;
+    margin-bottom: 0 ;
+}
+.handout a{
+    color: #fff;
+}
+.handout .textQtn{
+    color: #7777e2;
+}
+.handout .keywords{
+    color: #161318;
+}
+.handout .keywords .keyword,
+.handout .handoutEw .keyword{
+      color: #44ba80;
+      font-weight:bold;
+  }
+.handout .kwExplain{
+    color: #333;
+}
+.handout .ftBold{
+    font-weight: bold;
+}
+.handout .textUnder{
+    text-decoration: underline
+}
+.handout .kwExplain .kwExStart{
+    color: #44ba80;
+    font-style:normal
+}
+.handout .kwExplain .thisWord{
+    color: #44ba80;
+    font-style:italic
+}
+
+.handout .handoutEw .exWords{
+    color: #44ba80;
+    font-style:italic
+}
+.qtnFt {
+    padding: 10px 0;
+    color: #fff;
+    text-align: center;
+    background-color: #a397e2;
+    border-top: 1px solid #a397e2;
+}
+.qtnFt a{
+    color: #fff;
+}

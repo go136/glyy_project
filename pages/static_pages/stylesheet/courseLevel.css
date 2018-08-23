@@ -1,0 +1,132 @@
+body{
+    font-family:"Microsoft YaHei",Arial， Helvetica， sans-serif;
+}
+.clHt {
+    background-color: #fff;
+    margin-bottom: 0;
+}
+
+.clCnt h3 {
+    font-size: 22px;
+}
+
+.clCnt h4 {
+    color: #3C70C6;
+}
+
+.clHt a {
+    color: #5c5c5c;
+}
+
+.navbar-text {
+    float: none;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.videoCntDiv p {
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 200;
+}
+
+.navbar-text span:last-child {
+    font-weight: bold;
+}
+
+.container .videoCntDiv {
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 6px;
+}
+
+.clCnt {
+    padding-bottom: 40px;
+}
+
+/*.jumbotron {*/
+/*padding-top: 5px;*/
+/*padding-bottom: 10px;*/
+/*margin-bottom: 10px;*/
+/*!*color: inherit;*!*/
+/*color: #fff;*/
+/*background-color: #44ba80;*/
+/*position: relative;*/
+/*}*/
+
+#decription1,
+#decription2,
+#decription3 {
+    font-size: 18px;
+
+    overflow: hidden;
+    /*white-space: nowrap;*/
+    text-overflow: ellipsis;
+    height: 90%;
+}
+
+.videoCntDiv {
+    padding-top: 5px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    color: #fff;
+    background-color: #99CCFF;
+    position: relative;
+}
+
+.clCnt .clIntduc {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.clCnt .clImg {
+    color: #ffffff;
+    width: 50%;
+    height: 100%;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    right: 15px;
+    box-shadow:-3px -2px 8px 0px #888888;
+}
+
+.row {
+    width: 100%;
+    height: 100%;
+}
+
+.col-xs-7 {
+    position: relative;
+    /*position: absolute;*/
+    /*height: 100%;*/
+}
+
+#course_list1,
+#course_list2,
+#course_list3 {
+    position: absolute;
+    bottom: 8%;
+}
+
+.fl {
+    float: left;
+}
+
+.btnNoone {
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 15px;
+    line-height: 30px;
+    margin-left: 10px;
+    color: black;
+}
+
+{
+    position: absolute
+;
+    bottom: -100%
+;
+}

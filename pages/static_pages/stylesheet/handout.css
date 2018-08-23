@@ -1,0 +1,69 @@
+body{
+    font-family:"Microsoft YaHei",Arial， Helvetica， sans-serif;
+}
+.qtnHt{
+    background-color: #a397e2;
+    margin-bottom: 0 ;
+}
+.selfrow {
+	  font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-top: -2%;
+}
+.handout a{
+    color: #fff;
+}
+.handout .textQtn{
+    color: #7777e2;
+}
+.handout .keywords{
+    color: #333;
+}
+.handout .keywords .keyword,
+.handout .handoutEw .keyword{
+    color: #99ccff;
+    font-weight:bold;
+}
+.handout .kwExplain{
+    color: #333;
+}
+.handout .ftBold{
+    font-weight: bold;
+}
+.handout .textUnder{
+    text-decoration: underline
+}
+.handout .kwExplain .kwExStart{
+    color: #333;
+    font-style:normal;
+    /*font-weight:bold;*/
+}
+.handout .kwExplain .thisWord{
+    color: #99ccff;
+    font-style:italic
+}
+
+.handout .handoutEw .exWords{
+    color: #44ba80;
+    font-style:italic
+}
+.qtnFt {
+    width: 100%;
+    height: 20%;
+    /*padding: 10px 0;*/
+    color: #fff;
+    text-align: center;
+    background-color: #99CCFF;
+    /*border-top: 1px solid #99CCFF;*/
+    border-radius: 60px;
+}
+.qtnFt a{
+    color: #fff;
+}
+.handoutPic .hr{
+    height: 1px;
+    width: 100%;
+    margin-top: 5%;
+    background-color: blue;
+}

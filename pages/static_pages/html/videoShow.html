@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频页面</title>
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../stylesheet/base.css">
+    <link rel="stylesheet" href="../stylesheet/video.css"/>
+    <link rel="stylesheet" href="../stylesheet/frozen.css"/>
+    <link rel="stylesheet" href="../stylesheet/video-js.css"/>
+    <link rel="stylesheet" href="../stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="../stylesheet/handout.css">
+    <link rel="stylesheet" href="../stylesheet/zy.media.min.css">
+</head>
+<body>
+<div id="tabdemo">
+    <ul class="videohrT">
+        <li rel="tab-1" class="vtitle"><a href="#">视频</a></li>
+        <li rel="tab-2" class="vhandout" id="handout"><a id="tojy">讲义</a></li>
+        <div class="vdoCart" id="vdoCarta"></div>
+    </ul>
+    <div rel="tab-1" class="content">
+        <div class="videoCnt">
+            <h1 class="videoCntName"></h1>
+            <div class="video">
+                <div class="zy_media" id="vvv"></div>
+            </div>
+        </div>
+        <div class="vdoSub">
+            <div class="box" id="box">
+
+            </div>
+            <input type="button" name="vdoShare" value="分享" class="vdoShare">
+            <audio src="../img/video/水边%20各种空灵鸟叫_爱给网_aigei_com.mp3" controls="controls">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <div rel="tab-2" class="content">
+        <div class="container handout">
+            <div class="blog-header" id="list">
+                <div class="handoutKw">
+                    <h3 class="text-center">—重点单词—</h3>
+                    <div id="zddc0"></div>
+                </div>
+                <div class="handoutEw">
+                    <h3 class="text-center">—引申单词—</h3>
+                    <div id="ysdc0"></div>
+                </div>
+                <div class="handoutEw">
+                    <h3 class="text-center">—今日短语—</h3>
+                    <div id="jrdy0"></div>
+                </div>
+                <div class="handoutPic">
+                    <h3 class="text-center ">—重点句型—</h3>
+                    <div id="zdjx0"></div>
+                </div>
+                <div class="handoutPic">
+                    <h3 class="text-center ">—对话中文翻译—</h3>
+                    <div id="dhzwfy0"></div>
+                    <div id="dhimgdiv"></div>
+                </div>
+                <div class="handoutPic">
+                    <h3 class="text-center ">—引申知识的讲解—</h3>
+                    <div id="yszsjj0"></div>
+                    <div id="ysimgdiv"></div>
+                </div>
+                <footer class="qtnFt">
+                    <p>
+                        <a href="#">Back to top</a>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/tabs.js"></script>
+<script src="../js/video.js"></script>
+<script type="text/javascript">
+    $(function () {
+        tabs_takes.init("tabdemo");
+    })
+
+    $(document).ready(function(){
+        var storage=window.localStorage;
+        //视频URL
+        var media_url = storage.getItem("media_url");
+        //视频字幕URL
+        var caption_file_url = storage.getItem("caption_file_url");
+        var html = "<video id='example_video_1' class='video-js vjs-default-skin' controls preload='none'> <source id='sour' src='"+media_url+"'  type='video/mp4'/><track id='tra' src='"+caption_file_url+"' kind='subtitles' srclang='en' label='English'/></video>";
+        $("#vvv").html(html);
+
+        var lessons_id = storage.getItem("lessons_id");
+        var short_content = storage.getItem("short_content");
+        $("#box").html("<div>"+short_content+"</div>");
+        //为讲义按钮动态添加点击事件
+        /*$("#handout").click(function () {
+            toVideo(lessons_id);
+        });*/
+    });
+
+    /*function toVideo(a) {
+        var storage=window.localStorage;
+        storage.setItem("lessons_id",a);
+        //跳转到讲义页面
+        $("#tojy").attr("href","Handout讲义.html");
+    }*/
+
+    function getRootPath(){
+        var curWwwPath=window.document.location.href;
+        var pathName=window.document.location.pathname;
+        var pos=curWwwPath.indexOf(pathName);
+        var localhostPaht=curWwwPath.substring(0,pos);
+        var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+        return(localhostPaht+projectName);
+    }
+
+
+    $(document).ready(function(){
+        var storage=window.localStorage;
+        var lessonsid = storage.getItem("lessons_id");
+        getContent(lessonsid);
+    });
+
+    function getContent(o) {
+        $.ajax({
+            type: "post",
+            url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_handout_of_lesson.aspx",
+            data: {"lessonid":o},
+            success: function(data){
+                if (data.status == 0){
+                    if (data.handouts.length > 0){
+                        var zddc = new Array();
+                        var ysdc = new Array();
+                        var jrdy = new Array();
+                        var zdjx = new Array();
+                        var dhzwfy = new Array();
+                        var yszsjj = new Array();
+                        for(var i = 0; i < data.handouts.length; i++){
+                            if(data.handouts[i].type == "重点单词"){
+                                zddc.push(data.handouts[i]);
+                            }else if(data.handouts[i].type == "引申单词"){
+                                ysdc.push(data.handouts[i]);
+                            }else if(data.handouts[i].type == "今日短语"){
+                                jrdy.push(data.handouts[i]);
+                            }else if(data.handouts[i].type == "重点句型"){
+                                zdjx.push(data.handouts[i]);
+                            }else if(data.handouts[i].type == "对话中文翻译"){
+                                dhzwfy.push(data.handouts[i]);
+                            }else if(data.handouts[i].type == "引申知识的讲解"){
+                                yszsjj.push(data.handouts[i]);
+                            }
+                        }
+                        innzddc(zddc);
+                        innysdc(ysdc);
+                        innjrdy(jrdy);
+                        innzdjx(zdjx);
+                        inndhzwfy(dhzwfy);
+                        innyszsjj(yszsjj);
+                    }
+                }else{
+                    alert("接口异常");
+                }
+            }
+        });
+    }
+
+
+    function innzddc(o) {
+        if (o.length > 0){
+            for(var i = 0; i < o.length; i++){
+                var j = i+1;
+                $("#zddc"+i).after("<div id='zddc"+j+"'>"+ j+"." + o[i].english_content + ":"+o[i].chinese_content+"</div>");
+
+                if (o[i].medias.length > 0){
+                    if (o[i].medias[0].type == "picture"){
+                        $("#zddc"+i).after("<img id='zddcimg' src='"+o[i].medias[0].media_url+"'>");
+                    }
+                }
+            }
+        }
+    }
+
+    function innysdc(o) {
+        if (o.length > 0){
+            for(var i = 0; i < o.length; i++){
+                var j = i+1;
+//                $("#ysdc"+i).after("<div id='ysdc"+j+"'>" + j+"."+o[i].english_content + ":"+o[i].chinese_content+"</div>");
+                $("#ysdc"+i).after("<div id='ysdc"+j+"'>"+ j+"." + o[i].english_content + ":"+o[i].chinese_content+"</div>");
+
+                if (o[i].medias.length > 0){
+                    if (o[i].medias[0].type == "picture"){
+//                        $("#dhimgdiv").html("<img id='dhimg' src='"+o[i].medias[0].media_url+"'>");
+                        $("#ysdc"+i).after("<img id='ysimg' src='"+o[i].medias[0].media_url+"'>");
+                    }
+                }
+            }
+        }
+    }
+
+    function innjrdy(o) {
+        if (o.length > 0){
+            for(var i = 0; i < o.length; i++){
+                var j = i+1;
+                $("#jrdy"+i).after("<div id='jrdy"+j+"'>"+ j+"."+o[i].english_content + ":"+o[i].chinese_content+"</div>");
+                if (o[i].medias.length > 0){
+                    if (o[i].medias[0].type == "picture"){
+                        $("#jrdy"+i).after("<img id='jrimg' src='"+o[i].medias[0].media_url+"'>");
+                    }
+                }
+            }
+        }
+    }
+
+    function innzdjx(o) {
+        if (o.length > 0){
+            for(var i = 0; i < o.length; i++){
+                var j = i+1;
+                $("#zdjx"+i).after("<div id='zdjx"+j+"'>" + j+"."+o[i].english_content + ":"+o[i].chinese_content+"</div>");
+
+                if (o[i].medias.length > 0){
+                    if (o[i].medias[0].type == "picture"){
+                        $("#zdjx"+i).after("<img id='jrimg' src='"+o[i].medias[0].media_url+"'>");
+                    }
+                }
+            }
+        }
+    }
+
+    function inndhzwfy(o) {
+        console.dir(o);
+        if (o.length > 0){
+            var j = 1;
+            for(var i = 0; i < o.length; i++){
+                if(o[i].chinese_content != ""){
+                    j++;
+                    $("#dhzwfy"+i).after("<div id='dhzwfy"+j+"'>"+ (j-1)+"." +o[i].chinese_content+"</div>");
+                }else {
+                    $("#dhzwfy"+i).after("<div id='dhzwfy"+j+"'>"+o[i].chinese_content+"</div>");
+                }
+                if (o[i].medias.length > 0){
+                    if (o[i].medias[0].type == "picture"){
+                        $("#dhzwfy"+i).after("<img id='dhimg' src='"+o[i].medias[0].media_url+"'>");
+                    }
+                }
+            }
+        }
+    }
+
+    function innyszsjj(o) {
+        if (o.length > 0){
+            var j = 1;
+            for(var i = 0; i < o.length; i++){
+                var j = i+1;
+                $("#yszsjj"+i).after("<div id='yszsjj"+j+"'>" + j+"."+o[i].english_content + ":"+o[i].chinese_content+"</div>");
+                if (o[i].medias.length > 0){
+                    if (o[i].medias[0].type == "picture"){
+                        $("#ysimgdiv").html("<img id='ysimg' src='"+o[i].medias[0].media_url+"'>");
+//                        $("#yszsjj"+i).after("<img id='ysimg' src='"+o[i].medias[0].media_url+"'>");
+                    }
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

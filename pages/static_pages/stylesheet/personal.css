@@ -1,0 +1,60 @@
+.myLeft{
+    float: left;
+}
+.myLeft p:first-child{
+    font-size: 21px;
+    color: #675d5d;
+    font-weight: 600;
+}
+.myLeft p:nth-child(2),.myLeft p:last-child{
+    font-size: 16px;
+    color: #cccccc;
+}
+.myRight{
+    float: right;
+}
+.myRight{
+    display: inline-block;
+    /*color: cyan;*/
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.jumbotron {
+     padding-top: 10px;
+     padding-bottom: 0px;
+    background-color: #fff;
+    vertical-align: middle;
+    margin-bottom: 0px;
+
+}
+.jumbotron .ctnBor {
+    width:90%;
+    margin:0 auto;
+    border-bottom: 1px solid #E1E8E5;
+}
+.jumbotron p {
+     margin-bottom: 5px;
+     font-size: 21px;
+     font-weight: 200;
+}
+.prCnt .ctnBor {
+    width:90%;
+    margin:0 auto;
+    border-bottom: 1px solid #E1E8E5;
+}
+.col-md-3 {
+    position: relative;
+    min-height: 1px;
+     padding-right: 0px;
+     padding-left: 0px;
+}
+.prCnt h4{
+    padding-top: 3px;
+}
+
+.prCnt .prIcon{
+    float: right;
+    top: -38px;
+}

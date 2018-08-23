@@ -1,0 +1,259 @@
+body {
+    font-family: "Microsoft YaHei", Arial， Helvetica， sans-serif;
+    width: 100%;
+    height: 100%
+}
+
+.box p {
+    margin: 0 0;
+}
+
+.videohrT {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: #FCC;
+
+    width: 100%;
+    height: 44px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background: #fff;
+    line-height: 44px;
+    font-size: 16px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.videohrT li {
+    width: 20%;
+}
+
+.vtitle {
+    background-color: #fff;
+    color: #99CCFF;
+    /* width: 100px; */
+    height: 66%;
+    line-height: 165%;
+    display: table-row;
+    font-size: 14px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-top: 6px;
+    /* margin-left: 5px; */
+    text-align: center;
+    float: left;
+    border: 1px solid #99CCFF;
+}
+
+.videohrT .vtitle:first-child {
+    margin-left: 2%;
+}
+
+.vtitle a {
+    color: #ffffff;
+}
+
+.vhandout {
+    background-color: #99CCFF;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    display: table-row;
+    font-size: 14px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-top: 6px;
+    /*margin-left: 30px;*/
+    /*margin-left: 2%;*/
+    text-align: center;
+    float: left;
+}
+
+.vhandout a {
+    color: #ffffff;
+}
+
+.videohrT .vdoCart {
+    width: 20px;
+    height: 20px;
+    float: right;
+    background-image: url("../img/video/vdoCart.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 10px;
+    margin-right: 11px;
+}
+
+.videoCnt {
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    padding:0 10px;
+}
+
+.videoCnt h1 {
+    font-size: 14px;
+}
+
+.videoCntName {
+    padding-top: 5px;
+}
+
+.video {
+    width: 100%;
+    /*height: 150px;*/
+    /*margin-top: 20%;*/
+    background-color: white;
+}
+
+.vdoSub {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #fff;
+    /*margin: 4% auto;*/
+    /*position: relative;*/
+    /*background-color: #fff;*/
+}
+
+/*.vdoSub .subtitle {*/
+/*!*width: 85%;*!*/
+/*!*margin: 0 15px;*!*/
+/*}*/
+
+.vdoShare {
+    width: 90%;
+    height: 30px;
+    background-color: #44ba80;
+    border-radius: 10px;
+    margin: 11px 5%;
+    font-size: 12px;
+    /* text-align: center; */
+    border: 1px solid #44ba80;
+    color: #fff;
+
+}
+
+.vdoAudio {
+    width: 95%;
+    height: 38px;
+    /* margin: 10px auto; */
+    background: url(../img/video/vdoAudio.png);
+}
+
+.vdoTag {
+    width: 30px;
+    height: 30px;
+    background: url(../img/video/vdoTag.jpg) no-repeat;
+    position: absolute;
+    right: 5px;
+    top: 310px;
+    z-index: 2;
+}
+
+.ui-dialog {
+    display: none;
+}
+
+/*一级分类点击后样式*/
+#tabdemo .selectActive {
+    color: black;
+    background-color: #99CCFF;
+}
+
+/*二级分类对应样式*/
+.content {
+    display: none;
+    margin-top: 10%;
+}
+
+.zy_media {
+    z-index: 999999999;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.box {
+    margin: 14% auto;
+    width: 95%;
+}
+
+/*音频 固定最下面*/
+.vdoSub audio {
+    width: 100%;
+    background: #f2f2f2;
+}
+
+#tabdemo {
+    width: 100%;
+    height: 100%;
+}
+
+.container h4.narration {
+    margin-top: 5%;
+    color: #8DEEEE;
+}
+
+.lead {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.copyright {
+    line-height: 26px;
+    margin-top: 5%;
+}
+
+.container audio {
+    margin-top: 5%;
+}
+
+.videohrT li.list {
+    border-bottom: 1px solid #6c6;
+    width: 5%;
+    margin-top: 5%;
+    float: left;
+}
+
+/*切换音源*/
+.videoBtn {
+    width: 60px;
+    height: 30px;
+    background: url("../img/video/open.png") 0px 0px no-repeat;
+}
+
+.buttonOff {
+    background: url("../img/video/open.png") 0px -30px no-repeat;
+}
+
+h3.copyright {
+    height: 2px;
+    width: 100%;
+    background-color: #ccc;
+}
+
+.vdoSubtitle {
+    width: 100%;
+    /* height: 400px; */
+    line-height: 30px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    word-break: normal;
+    /* overflow-x: hidden; */
+}
+
+.vdoSubtitle .vdoSubtle {
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 15%;
+    word-wrap: break-word;
+    word-break: normal;
+}

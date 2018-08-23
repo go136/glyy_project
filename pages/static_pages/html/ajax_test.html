@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/template.js"></script>
+    <script type="text/javascript" >
+        $.ajax({
+            url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_handout_of_lesson.aspx?lessonid=1",
+            method: "get",
+            //dataType: "json",
+            success: function (msg) {
+                var data = eval("(" + msg + ")");
+                alert(data.status);
+                alert(data.handouts[0].chinese_content);
+            },
+            error: function (msg) {
+                alert(msg)
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

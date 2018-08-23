@@ -1,0 +1,52 @@
+body{
+    font-family: "华文细黑";
+    background:url("../img/invite_scan/isBgc.jpg") no-repeat;
+    background-size:cover;
+}
+html,body{
+    width:100%;
+    height:100%
+}
+.container .jumbotron{
+    padding-top: 10px;
+    margin-top: 10px;
+}
+.jumbotron{
+    margin-bottom: 0;
+    background-color: #fff;
+    opacity: 0.5;
+}
+.iteCont .jumbotron .iteCnt{
+    border: 2px solid #00c795;
+    padding: 15px;
+    text-align: center;
+}
+.container .jumbotron .row .isTable{
+    text-align: center;
+}
+.container .jumbotron span{
+    color: #00c795;
+}
+
+.container .jumbotron p {
+    margin-bottom: 0px;
+}
+.container .jumbotron img{
+    margin-top:10px;
+}
+.isNav{
+    text-align: center;
+    line-height: 50px;
+    background-color: #00c795;
+}
+.isNav .isNavA{
+    color: white;
+}
+.isNav .isNavA:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-default {
+     border-color:#00c795;
+}
