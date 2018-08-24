@@ -1,0 +1,300 @@
+html {
+	font-size: 125%; /* 20梅16=125% min-font-size:12px bug*/
+}
+@media only screen and (min-width: 481px) {
+html {
+	font-size: 188%!important; /* 30.08梅16=188% */
+}
+}
+@media only screen and (min-width: 561px) {
+html {
+	font-size: 218%!important; /* 38.88梅16=218% */
+}
+}
+@media only screen and (min-width: 641px) {
+html {
+	font-size: 250%!important; /* 40梅16=250% */
+}
+}
+body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+margin: 0;padding: 0;border: 0;font-size: 1em;font: inherit;vertical-align: baseline;font-family: "Microsoft YaHei"}
+body {font-family: "Microsoft YaHei";font-size: 0.7rem;color: #333;line-height: 0.7rem;width: 100%;background: #f2f2f2;}
+em {font-style: normal}
+li {list-style: none}
+a {text-decoration: none;outline: 0;color: #333;}
+.center{ text-align:center}
+.red {color: #ff6464;}
+.blue {color: #64b3ff;}
+
+/*************************************页面开始************************************/
+header{
+  background: #64b3ff;
+  width: 100%;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 97;
+  border-bottom:1px solid #efefef;
+}
+header ._left {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+header ._left img {
+  height: 1rem;
+  margin:0 0 0 0.6rem;
+}
+header ._right {
+  display: block;
+  position: absolute;
+  right: 0.6rem;
+  top: 0;
+  font-size:0.8rem;
+  color:#f00
+}
+header ._right a{
+  color:#fff
+}
+header span{
+  color:#fff
+}
+
+.contaniner {
+  width: 100%;
+  margin-top:2.5rem;
+  margin-bottom: 50px;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+.textfl {
+  text-align:left
+}
+.textfr {
+  text-align:right
+}
+
+/**** 支付订单 ****/
+.clas {
+  overflow: hidden;
+  height: 4rem;
+  border-bottom: 1px solid #ccc;
+  padding: 4%;
+  background-color: #fff;
+}
+.clas dt {
+  float: left;
+  width: 30%;
+  height: 100%;
+}
+.clas dt img {
+  width: 100%;
+  height: 100%;
+}
+.clas dd {
+  float: right;
+  padding-left: 4%;
+  width: 66%;
+  font-size: 16px;
+  line-height: 20px;
+  position: relative;
+  height: 100%;
+}
+.clas dd .list {
+  overflow: hidden;
+}
+.clas dd .list span {
+  width: 80%;
+  float: left;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.clas dd .list strong {
+  float: right;
+  line-height: 40px;
+}
+.clas dd .myChange {
+  position: absolute;
+  bottom: 0;
+  color: #999;
+  overflow: hidden;
+  width: 94%;
+}
+.clas dd .myChange span {
+  float: left;
+  width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.clas dd .myChange strong {
+  float: right;
+  font-weight: normal;
+}
+.stl {
+  background-color: #fff;
+  padding: 4%;
+  margin-bottom: 2%;
+  line-height: 30px;
+  font-size: 16px;
+}
+.stl p {
+  overflow: hidden;
+}
+.stl p strong {
+  float: left;
+}
+.stl p span {
+  float: right;
+}
+.stl small {
+  font-size: 14px;
+}
+.info {
+  padding: 4%;
+  background-color: #fff;
+  font-size: 16px;
+  line-height: 30px;
+  padding-bottom: 0;
+  line-height: 30px;
+}
+.info p {
+  overflow: hidden;
+}
+.info p img {
+  float: right;
+  padding-top: 6px;
+}
+.info p input {
+  border: none;
+  padding: 4px;
+}
+.pay {
+  width:100%;
+  height:300px;
+  position:relative;
+  background-color: #fff;
+}
+.show{
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0
+}
+.show li{
+  width:100%;
+  height:60px;
+  line-height:60px;
+  list-style:none;
+  background:#fff;
+  border-bottom:1px solid #eee
+}
+.show img{
+  width:40px;
+  height:40px;
+  margin-left:10px;
+  margin-right:10px;
+}
+.show input[type="radio"]{
+  display:none;
+}
+.show input[type="radio"] + span{
+  border:1px solid #CCCCCC;
+  border-radius:20px;
+  width:20px;
+  height:20px;
+  float:right;
+  margin-top:20px;
+  margin-right:20px;
+}
+.show input[type="radio"]:checked + span{
+  border:1px solid #66c068;
+  border-radius:20px;
+  background:url(../img/payment/checkbox-on.png) no-repeat;
+  background-size: 20px 20px;
+}
+.showList{
+  width:100%;
+  position:absolute;
+  top:183px;
+  left:0
+}
+.showList li{
+  width:100%;
+  height:60px;
+  line-height:60px;
+  list-style:none;
+  background:#fff;
+  border-bottom:1px solid #eee
+}
+.showList img{
+  width:40px;
+  height:40px;
+  margin-left:10px;
+  margin-right:10px;
+}
+.showList input[type="radio"]{
+  display:none;
+}
+.showList input[type="radio"] + span{
+  border:1px solid #ccc;
+  border-radius:20px;
+  width:20px;
+  height:20px;
+  float:right;
+  margin-top:20px;
+  margin-right:20px;
+}
+.showList input[type="radio"]:checked + span{
+  border:1px solid #66c068;
+  border-radius:20px;
+  background:url(../img/payment/checkbox-on.png) no-repeat;
+  background-size: 20px 20px;
+}
+label{
+  width: 100%;
+  height: 60px;
+  display: inline-block;
+}
+footer {
+    position: fixed;
+    height: 50px;
+    line-height: 50px;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    border-top: 1px solid #eee;
+}
+footer a,footer strong,footer span {
+    float: right;
+}
+footer a {
+    font-size: 24px;
+    background-color: #ff6345;
+    color: #fff;
+    padding: 0 8%;
+}
+footer strong {
+    color: #ff6345;
+    font-size: 24px;
+    margin-right: 4%;
+}
+footer strong small {
+    font-size: 14px;
+}
+footer span {
+    color: #333;
+    font-size: 16px;
+    margin-right: 4%;
+}

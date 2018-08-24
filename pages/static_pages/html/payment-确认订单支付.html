@@ -6,8 +6,7 @@
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>支付订单</title>
 
-  <link rel="stylesheet" href="../stylesheet/hcqStyle.css" type="text/css"/>
-
+  <link rel="stylesheet" href="../stylesheet/payment.css" type="text/css"/>
   <script type="text/javascript" src="../js/jquery-1.8.2.min.js" ></script>
 
 </head>
@@ -21,27 +20,58 @@
 <!--头部 end-->
 <!--内容 star-->
 <div class="contaniner fixed-cont">
-
-    <div class="payTime">
-      <li><span>剩余时间14:56</span></li>
-        <li><strong>¥56.00</strong></li>
-        <li>订单号:487237899083627829</li>
-    </div>
-
+  <dl class="clas">
+    <dt>
+      <img src="../img/course/curliImg.png" alt="">
+    </dt>
+    <dd>
+      <p class="list">
+        <span>甘蓝阅读 by 百词斩40期 高阶层1</span>
+        <strong>X 1</strong>
+      </p>
+      <p class="myChange">
+        <span>已选：甘蓝40期高阶</span>
+        <strong>￥ 129.00</strong>
+      </p>
+    </dd>
+  </dl>
+  <div class="stl">
+    <p>
+      <strong>商品总价</strong>
+      <span>￥ 129.00</span>
+    </p>
+    <p>
+      <strong>邮费<small class="red">（满50包邮）</small></strong>
+      <span class="blue">￥ 0.00</span>
+    </p>
+    <p>
+      <strong>优惠</strong>
+      <span class="red">-￥ 0.00</span>
+    </p>
+  </div>
+  <div class="info">
+    <p>
+      给卖家留言：<input type="text" placeholder="在这里说明您的要求哦~~">
+    </p>
+    <p>
+      优惠卷：
+      <img src="../img/payment/right.png" alt="">
+    </p>
+  </div>
     <!--支付 star-->
   <div class="pay">
-    <div class="show">
+    <ul class="show">
       <li><label><img src="../img/payment/weixin.png" >微信支付<input name="Fruit" type="radio" value="" checked/><span></span></label> </li>
-        <li><label><img src="../img/payment/zhifubao.png" >支付宝支付<input name="Fruit" type="radio" value="" /><span></span></label> </li>
+        <!-- <li><label><img src="../img/payment/zhifubao.png" >支付宝支付<input name="Fruit" type="radio" value="" /><span></span></label> </li>
         <li><label><img src="../img/payment/yue.png" >余额支付<input name="Fruit" type="radio" value="" /><span></span></label> </li>
-        <li class="center"><a href="#" onClick="showHideCode()">查看更多支付方式↓</a></li>
-    </div>
-    <div class="showList" id = "showdiv" style="display:none;">
+        <li class="center"><a href="#" onClick="showHideCode()">查看更多支付方式↓</a></li> -->
+    </ul>
+    <!-- <div class="showList" id = "showdiv" style="display:none;">
       <li><label><img src="../img/payment/yinhang.png" >银行卡<input name="Fruit" type="radio" value="" /><span></span></label> </li>
             <li><label><img src="../img/payment/weixin.png" >添加更多<input name="Fruit" type="radio" value=""/><span></span></label> </li>
 
             <li style="background:none" ></li>
-    </div>
+    </div> -->
   </div>
     <!--支付 end-->
 
@@ -49,13 +79,11 @@
 </div>
 
 
-<div class="book-recovery-bot2" id="footer">
-  <a href="#"><div class="payBottom">
-      <li class="textfr">确认支付:</li>
-        <li class="textfl"><span>¥56.00</span></li>
-    </div>
-  </a>
-</div>
+<footer>
+    <a href="">付款</a>
+    <strong>129<small>元</small></strong>
+    <span>实付</span>
+</footer>
 <!--内容 end-->
 
 
