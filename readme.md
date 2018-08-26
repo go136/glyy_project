@@ -1,1 +1,2 @@
 vstest
+launch
