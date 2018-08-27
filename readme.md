@@ -1,2 +1,2 @@
 vstest
-launch
+launch test
