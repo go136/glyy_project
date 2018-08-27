@@ -162,7 +162,7 @@
         <small>快去选择你喜爱的书单吧</small>
     </div>
     <div class="buy">
-        <a href="">立即购买</a>
+        <a href="payment-确认订单支付.html">立即购买</a>
         <strong>129<small>元/期</small></strong>
         <span>原价149元</span>
     </div>
@@ -232,5 +232,27 @@
 </script>
 <script src="../js/jquery-1.4.4.min.js"></script>
 <script src="../js/jquery.reveal.js"></script>
+<script>
+    $(function() {
+        $(".chage").click(function() {
+            var index = $(".chage").index(this);
+            if($(".curList ul").find("li").eq(index).hasClass("myChange")) {
+                $(".curList ul").find("li").eq(index).removeClass("myChange");
+                $(".chage").eq(index).text("选择");
+            } else {
+                $(".curList ul").find("li").eq(index).addClass("myChange");
+                $(".chage").eq(index).text("已选");
+            }
+
+            if($(".curList ul").find("li").hasClass("myChange")) {
+                $(".noBuy").hide();
+                $(".buy").show();
+            } else {
+                $(".noBuy").show();
+                $(".buy").hide();
+            }
+        })
+    })
+</script>
 </body>
 </html>
