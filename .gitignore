@@ -2,7 +2,7 @@
 ## Eclipse
 #################
 
-/Web.config
+*.config
 
 *.pydevproject
 .project
