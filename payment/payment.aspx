@@ -177,7 +177,7 @@
         }
         catch
         {
-            Response.Write(prepayXml.Trim());
+            Response.Write(prepayXml.Trim().Replace("<", "&lt;").Replace(">", "&gt;"));
             Response.End();
             return "";
         }
