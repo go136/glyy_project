@@ -175,6 +175,7 @@
         catch
         {
             Response.Write(xmlDPrepayId.InnerXml.Trim());
+            Response.End();
             return "";
         }
     }
