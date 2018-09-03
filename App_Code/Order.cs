@@ -16,7 +16,7 @@ public class Order
 
 	public Order(string outTradeNo)
 	{
-        SqlDataAdapter da = new SqlDataAdapter(" select * from orders where order_out_trade_no = " 
+        SqlDataAdapter da = new SqlDataAdapter(" select * from weixin_payment_orders where order_out_trade_no = "
             + Int64.Parse(outTradeNo).ToString(), Util.conStr.Trim());
         DataTable dt = new DataTable();
         da.Fill(dt);
@@ -28,7 +28,7 @@ public class Order
     {
         set
         {
-            string sql = " update orders set order_prepay_id = '" + value.Trim().Replace("'", "")
+            string sql = " update weixin_payment_orders set order_prepay_id = '" + value.Trim().Replace("'", "")
                 + "'  where order_out_trade_no = '" + _fields["order_out_trade_no"].ToString().Trim() + "'  ";
             SqlConnection conn = new SqlConnection(Util.conStr);
             SqlCommand cmd = new SqlCommand(sql, conn);
@@ -67,7 +67,7 @@ public class Order
         }
         set
         {
-            string sql = " update orders set order_is_paid = '" + value.ToString()
+            string sql = " update weixin_payment_orders set order_is_paid = '" + value.ToString()
                 + "'  where order_out_trade_no = '" + _fields["order_out_trade_no"].ToString().Trim() + "'  ";
             SqlConnection conn = new SqlConnection(Util.conStr);
             SqlCommand cmd = new SqlCommand(sql, conn);
@@ -92,7 +92,7 @@ public class Order
         string spBillCreateIp
         )
     {
-        string sql = "insert into orders ("
+        string sql = "insert into weixin_payment_orders ("
             + " order_out_trade_no , "
             + " order_appid , "
             + " order_mchid , "
@@ -127,7 +127,7 @@ public class Order
 
     public static Order GetOrderByOriginInfo(string body, int productId, int amount)
     {
-        DataTable dt = DBHelper.GetDataTable(" select * from orders where order_body = '" + body.Trim().Replace("'", "") + "'  and "
+        DataTable dt = DBHelper.GetDataTable(" select * from weixin_payment_orders where order_body = '" + body.Trim().Replace("'", "") + "'  and "
             + "  order_product_id = " + productId.ToString() + "  and order_total_fee = " + amount.ToString() + "  ", Util.conStr.Trim());
         if (dt.Rows.Count > 0)
         {
