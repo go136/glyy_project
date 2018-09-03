@@ -22,19 +22,19 @@
     public string shaStrOri = "";
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
         appId = System.Configuration.ConfigurationSettings.AppSettings["wxappid"].Trim();
         appSecret = System.Configuration.ConfigurationSettings.AppSettings["wxappsecret"].Trim();
         mch_id = System.Configuration.ConfigurationSettings.AppSettings["mch_id"].Trim();
-        
-        
-        
+
+
+
         if (!IsPostBack)
         {
             if (Request["state"] == null)
             {
                 string callBackUrl = (Request["callback"] == null) ? "" : Request["callback"].Trim();
-                
+
                 if (Request["product_id"] != null)
                     Session["product_id"] = Request["product_id"];
                 Session["call_back_url"] = callBackUrl+"&paymethod=wechat";
@@ -50,12 +50,12 @@
                 string redirectUrl = "payment_goto_bank.aspx?timestamp=" + timeStamp.Trim()+product_id + "&noncestr="
                     + nonce_str.Trim() + "&prepayid=" + prepayId.Trim() + "&callback=" + callBackUrl;
                 Response.Redirect(redirectUrl, true);
-                
+
             }
         }
     }
 
-    
+
 
 
     public string GetPrepayId(out string product_id)
@@ -75,7 +75,7 @@
         string nonceStr = Util.GetNonceString(32);
 
         //nonceStr = "jihuo";
-        
+
         nonce_str = nonceStr.Trim();
         n = xmlD.CreateNode(XmlNodeType.Element, "nonce_str", "");
         n.InnerText = nonceStr;
@@ -93,8 +93,8 @@
         n.InnerText = Request.UserHostAddress.Trim();
         rootXmlNode.AppendChild(n);
 
-        
-        
+
+
         n = xmlD.CreateNode(XmlNodeType.Element, "trade_type", "");
         n.InnerText = "JSAPI";
         rootXmlNode.AppendChild(n);
@@ -111,8 +111,8 @@
                     v = statePair.Split(':')[1].Trim();
                 }
                 catch
-                { 
-                
+                {
+
                 }
                 if (!key.Equals("action"))
                 {
@@ -120,7 +120,7 @@
                     n.InnerText = v;
                     rootXmlNode.AppendChild(n);
                 }
-                    
+
             }
         }
 
@@ -129,7 +129,7 @@
         product_id = rootXmlNode.SelectSingleNode("product_id").InnerText.Trim().PadLeft(6,'0');
         n.InnerText = timeStamp + rootXmlNode.SelectSingleNode("product_id").InnerText.Trim().PadLeft(6, '0');
         rootXmlNode.AppendChild(n);
-        
+
         string s = Util.ConverXmlDocumentToStringPair(xmlD);
         s = Util.GetMd5Sign(s, "jihuowangluoactivenetworkjarrodc");
         n = xmlD.CreateNode(XmlNodeType.Element, "sign", "");
@@ -149,12 +149,12 @@
                 rootXmlNode.SelectSingleNode("product_id").InnerText.Trim(),
                 int.Parse(rootXmlNode.SelectSingleNode("total_fee").InnerText.Trim()),
                 rootXmlNode.SelectSingleNode("spbill_create_ip").InnerText.Trim());
-            
-                
+
+
         }
         catch
-        { 
-        
+        {
+
         }
 
         string prepayXml = Util.GetWebContent("https://api.mch.weixin.qq.com/pay/unifiedorder", "post", xmlD.InnerXml.Trim(), "raw");
@@ -162,13 +162,21 @@
         XmlDocument xmlDPrepayId = new XmlDocument();
         xmlDPrepayId.LoadXml(prepayXml);
 
-        string prepayId = xmlDPrepayId.SelectSingleNode("//xml/prepay_id").InnerText.Trim();
-        
-        Order order = new Order(rootXmlNode.SelectSingleNode("out_trade_no").InnerText.Trim());
-        order.PrepayId = prepayId.Trim();
-        
-        
-        return prepayId.Trim();
+        try
+        {
+            string prepayId = xmlDPrepayId.SelectSingleNode("//xml/prepay_id").InnerText.Trim();
+
+            Order order = new Order(rootXmlNode.SelectSingleNode("out_trade_no").InnerText.Trim());
+            order.PrepayId = prepayId.Trim();
+
+
+            return prepayId.Trim();
+        }
+        catch
+        {
+            Response.Write(xmlDPrepayId.InnerXml.Trim());
+            return "";
+        }
     }
 
     public string GetStateStr()
@@ -182,7 +190,7 @@
             s = s + "|total_fee:" + Request["total_fee"].Trim();
         if (Request["product_id"] != null)
             s = s + "|product_id:" + Request["product_id"].Trim();
-        
+
         return Server.UrlEncode(s);
     }
 
@@ -196,12 +204,12 @@
         //redirectUri = redirectUri + "&callback=" + callBackUrl;
         //redirectUri = Server.UrlEncode(redirectUri);
         string getCodeUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
-            + "appid=" + appId.Trim() + "&redirect_uri=" +  redirectUri.Trim() 
+            + "appid=" + appId.Trim() + "&redirect_uri=" +  redirectUri.Trim()
             + "&response_type=code&scope=snsapi_base&state=" + GetStateStr() + "#wechat_redirect";
         //Response.Write(getCodeUrl);
         Response.Redirect(getCodeUrl);
     }
-    
+
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
