@@ -80,9 +80,9 @@
         
         jsParameterStr = Util.GetSortedArrayString(jsParameterStr);
         if (signType.Trim().Equals("MD5"))
-            jsMd5 = Util.GetMd5Sign(jsParameterStr.Trim(), "jihuowangluoactivenetworkjarrodc").ToUpper();
+            jsMd5 = Util.GetMd5Sign(jsParameterStr.Trim(), "cabageenglishchargeaccounjarrodc").ToUpper();
         else
-            jsMd5 = Util.GetSHA1(jsParameterStr.Trim() + "&key=jihuowangluoactivenetworkjarrodc");
+            jsMd5 = Util.GetSHA1(jsParameterStr.Trim() + "&key=cabageenglishchargeaccounjarrodc");
         order.Status = 1;
 
         callBackUrl = (Request["callback"] == null) ? "" : Request["callback"].Trim();
