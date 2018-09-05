@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" %>
+﻿<%@ Page Language="C#" Debug="true" %>
 <%@ Import Namespace="System.Xml" %>
 <%@ Import Namespace="System.IO" %>
 <!DOCTYPE html>
@@ -131,7 +131,8 @@
         rootXmlNode.AppendChild(n);
 
         string s = Util.ConverXmlDocumentToStringPair(xmlD);
-        s = Util.GetMd5Sign(s, "jihuowangluoactivenetworkjarrodc");
+ //     s = Util.GetMd5Sign(s, "jihuowangluoactivenetworkjarrodc");
+        s = Util.GetMd5Sign(s, "cabageenglishchargeaccounjarrodc");
         n = xmlD.CreateNode(XmlNodeType.Element, "sign", "");
         n.InnerText = s.Trim();
         rootXmlNode.AppendChild(n);
