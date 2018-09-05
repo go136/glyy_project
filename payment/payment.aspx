@@ -160,8 +160,8 @@
 
         string prepayXml = Util.GetWebContent("https://api.mch.weixin.qq.com/pay/unifiedorder", "post", xmlD.InnerXml.Trim(), "raw");
 
-        Response.Write(xmlD.InnerXml.Replace("<", "&lt;").Replace(">", "&gt;"));
-        Response.End();
+        //Response.Write(xmlD.InnerXml.Replace("<", "&lt;").Replace(">", "&gt;"));
+        //Response.End();
 
         XmlDocument xmlDPrepayId = new XmlDocument();
         xmlDPrepayId.LoadXml(prepayXml);
