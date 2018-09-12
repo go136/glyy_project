@@ -37,7 +37,29 @@
 
                 if (Request["product_id"] != null)
                     Session["product_id"] = Request["product_id"];
+
+                OnlineOrder order = new OnlineOrder(int.Parse(Session["product_id"].ToString().Trim()));
+                try
+                {
+                    string openId = WeixinUser.CheckToken(Request["token"].Trim());
+
+                    if (!order._fields["owner"].ToString().Trim().Equals(openId))
+                    {
+                        Response.End();
+                    }
+                    if (int.Parse(order._fields["total_amount"].ToString().Trim()) != int.Parse(Request["total_fee"].Trim()))
+                    {
+                        Response.End();
+                    }
+                }
+                catch
+                {
+                    Response.End();
+                }
+
+
                 Session["call_back_url"] = callBackUrl+"&paymethod=wechat";
+
                 GetUserAccessTokenAndOpneId();
             }
             else
@@ -131,7 +153,7 @@
         rootXmlNode.AppendChild(n);
 
         string s = Util.ConverXmlDocumentToStringPair(xmlD);
- //     s = Util.GetMd5Sign(s, "jihuowangluoactivenetworkjarrodc");
+        //     s = Util.GetMd5Sign(s, "jihuowangluoactivenetworkjarrodc");
         s = Util.GetMd5Sign(s, "cabageenglishchargeaccounjarrodc");
         n = xmlD.CreateNode(XmlNodeType.Element, "sign", "");
         n.InnerText = s.Trim();

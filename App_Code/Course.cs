@@ -18,6 +18,16 @@ public class Course
         //
     }
 
+
+    public Course(int id)
+    {
+        DataTable dt = DBHelper.GetDataTable(" select * from course where [id] = " + id.ToString());
+        if (dt.Rows.Count == 1)
+        {
+            _fields = dt.Rows[0];
+        }
+    }
+
     public double Price
     {
         get
