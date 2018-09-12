@@ -49,11 +49,13 @@
                     }
                     if (int.Parse(order._fields["total_amount"].ToString().Trim()) != int.Parse(Request["total_fee"].Trim()))
                     {
+                        Response.Write("Fee wrong");
                         Response.End();
                     }
                 }
                 catch
                 {
+                    Response.Write("Invalid token");
                     Response.End();
                 }
 
