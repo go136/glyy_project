@@ -18,7 +18,11 @@ public class Course
         //
     }
 
+    public double GetPrice(string openId, DateTime orderDate)
+    {
+        return double.Parse(_fields["price"].ToString());
 
+    }
     public Course(int id)
     {
         DataTable dt = DBHelper.GetDataTable(" select * from course where [id] = " + id.ToString());
