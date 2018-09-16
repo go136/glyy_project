@@ -82,5 +82,17 @@ public class Course
         return lessonArray;
     }
 
+    public static Course[] GetCoursesForOnPerson(string openId)
+    {
+        DataTable dt = DBHelper.GetDataTable("  select course_id from orders where owner = '" + openId.Trim() + "' and valid = 1 and state = 2  order by [id] ");
+        Course[] courseArray = new Course[dt.Rows.Count];
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            courseArray[i] = new Course(int.Parse(dt.Rows[i]["id"].ToString()));
+        }
+        dt.Dispose();
+        return courseArray;
+    }
+
     
 }
