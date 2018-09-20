@@ -20,7 +20,7 @@
                 ret = ret + (ret.Trim().Equals("") ? "" : ",") + dr[0].ToString().Trim();
             }
             dt.Dispose();
-            Response.Write("{\"token_is_valid\": 0, \"order_courses\": \"" + ret.Trim() + "\"}");
+            Response.Write("{\"token_is_valid\": 1, \"order_courses\": \"" + ret.Trim() + "\"}");
         }
     }
 </script>

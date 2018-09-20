@@ -25,6 +25,13 @@ public class OnlineOrder
         }
     }
 
+    public void Cancel()
+    {
+        DBHelper.UpdateData("orders", new string[,] { { "state", "int", "3" }, { "valid", "int", "0" } },
+            new string[,] { { "id", "int", _fields["id"].ToString() } }, Util.conStr);
+  
+    }
+
     public static int PlaceOrder(string openId, int courseId, DateTime orderDate, int ticketId)
     {
         int orderId = 0;
