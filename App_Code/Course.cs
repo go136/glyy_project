@@ -11,6 +11,8 @@ public class Course
 {
     public DataRow _fields;
 
+    
+
     public Course()
     {
         //
@@ -56,6 +58,8 @@ public class Course
         }
 
     }
+
+
 
     public static Course[] GetAllCourses()
     {

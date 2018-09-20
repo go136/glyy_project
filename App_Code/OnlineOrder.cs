@@ -12,6 +12,11 @@ public class OnlineOrder
 
     public DataRow _fields;
 
+    public OnlineOrder()
+    {
+
+    }
+
     public OnlineOrder(int orderId)
     {
         //
@@ -30,6 +35,17 @@ public class OnlineOrder
         DBHelper.UpdateData("orders", new string[,] { { "state", "int", "3" }, { "valid", "int", "0" } },
             new string[,] { { "id", "int", _fields["id"].ToString() } }, Util.conStr);
   
+    }
+
+    public static OnlineOrder GetLastCourseOrder(string openId)
+    {
+        DataTable dt = DBHelper.GetDataTable(" select top 1 * from orders where state = 2 and valid = 1 and owner =  '" + openId.Replace("'", "") + "' order by [id] desc");
+        OnlineOrder order = new OnlineOrder();
+        if (dt.Rows.Count > 0)
+        {
+            order._fields = dt.Rows[0];
+        }
+        return order;
     }
 
     public static int PlaceOrder(string openId, int courseId, DateTime orderDate, int ticketId)
