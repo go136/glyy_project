@@ -16,22 +16,22 @@
         }
         if (newCourseId == 0)
         {
-            string sort = Util.GetSafeRequestValue(Request, "sort", "");
-            string teacher = Util.GetSafeRequestValue(Request, "teacher", "");
-            string level = Util.GetSafeRequestValue(Request, "level", "");
+            string sort = Util.GetSafeRequestValue(Request, "sort", "a");
+            string teacher = Util.GetSafeRequestValue(Request, "teacher", "b");
+            string level = Util.GetSafeRequestValue(Request, "level", "c");
 
             string filter = "";
             if (!sort.Trim().Equals(""))
             {
-                filter = ((filter.Trim().Equals("")) ? " " : " and ") + " sort = '" + sort + "' ";
+                filter = filter + ((filter.Trim().Equals("")) ? " " : " and ") + " sort = '" + sort + "' ";
             }
             if (!level.Trim().Equals(""))
             {
-                filter = ((filter.Trim().Equals("")) ? " " : " and ") + " level = '" + level + "' ";
+                filter = filter + ((filter.Trim().Equals("")) ? " " : " and ") + " level = '" + level + "' ";
             }
             if (!teacher.Trim().Equals(""))
             {
-                filter = ((filter.Trim().Equals("")) ? " " : " and ") + " teacher = '" + teacher + "' ";
+                filter = filter + ((filter.Trim().Equals("")) ? " " : " and ") + " teacher = '" + teacher + "' ";
             }
 
             if (!filter.Trim().Equals(""))

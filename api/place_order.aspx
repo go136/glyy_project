@@ -15,7 +15,7 @@
             if (orderId > 0)
             {
                 OnlineOrder order = new OnlineOrder(orderId);
-                Response.Write("{\"token_is_valid\": 0, \"order_id\": " + orderId.ToString() + ", \"amount\": " + Math.Round(double.Parse(order._fields["total_amount"].ToString()), 2).ToString() 
+                Response.Write("{\"token_is_valid\": 1, \"order_id\": " + orderId.ToString() + ", \"amount\": " + Math.Round(double.Parse(order._fields["total_amount"].ToString()), 2).ToString() 
                     + ", \"real_pay_amount\": " + Math.Round(double.Parse(order._fields["real_pay"].ToString()), 2).ToString() + " }");
             }
             else

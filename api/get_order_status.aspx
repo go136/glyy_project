@@ -3,10 +3,15 @@
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string token = Util.GetSafeRequestValue(Request, "token", "8aa2e9a7a63d0650eee5b99b5be8dcd4bf83d08b9fa774e518b9c40d467c42c14ceb0c43");
+        string token = Util.GetSafeRequestValue(Request, "token", "f48abff6f296f151f55fec058824a6c261517876e5cc15465edd12244f114830445af7ce");
         int orderId = int.Parse(Util.GetSafeRequestValue(Request, "orderid", "9"));
         string openId = WeixinUser.CheckToken(token.Trim());
         OnlineOrder order = new OnlineOrder(orderId);
+        if (order._fields == null)
+        {
+            Response.Write("{\"msg\": \"The order is not exists.\"}");
+            Response.End();
+        }
         if (openId.Trim().Equals(order._fields["owner"].ToString().Trim()))
         {
             string itemJson = Util.ConvertDataTableToJsonItemArray(order._fields.Table)[0];
