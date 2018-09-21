@@ -16,9 +16,9 @@
         }
         if (newCourseId == 0)
         {
-            string sort = Util.GetSafeRequestValue(Request, "sort", "a");
-            string teacher = Util.GetSafeRequestValue(Request, "teacher", "b");
-            string level = Util.GetSafeRequestValue(Request, "level", "c");
+            string sort = Util.GetSafeRequestValue(Request, "sort", "");
+            string teacher = Util.GetSafeRequestValue(Request, "teacher", "");
+            string level = Util.GetSafeRequestValue(Request, "level", "");
 
             string filter = "";
             if (!sort.Trim().Equals(""))
