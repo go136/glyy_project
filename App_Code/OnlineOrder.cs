@@ -37,6 +37,19 @@ public class OnlineOrder
   
     }
 
+    public static OnlineOrder[] GetOrders(string openId)
+    {
+        DataTable dt = DBHelper.GetDataTable(" select * from orders where owner = '" + openId.Trim().Replace("'", "").Trim() + "' order by [id] desc ");
+        OnlineOrder[] orderArray = new OnlineOrder[dt.Rows.Count];
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            orderArray[i] = new OnlineOrder();
+            orderArray[i]._fields = dt.Rows[i];
+        }
+        return orderArray;
+    }
+
+
     public static OnlineOrder GetLastCourseOrder(string openId)
     {
         DataTable dt = DBHelper.GetDataTable(" select top 1 * from orders where state = 2 and valid = 1 and owner =  '" + openId.Replace("'", "") + "' order by [id] desc");

@@ -140,6 +140,7 @@ public class Order
 
     }
 
+    
     public static bool GetPaidResultFromWeixin(string outTradeNo)
     {
         string appId = System.Configuration.ConfigurationSettings.AppSettings["wxappid"].Trim();
