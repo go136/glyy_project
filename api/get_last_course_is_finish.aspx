@@ -15,7 +15,8 @@
             OnlineOrder order = OnlineOrder.GetLastCourseOrder(openId);
             Course course = new Course(int.Parse(order._fields["course_id"].ToString()));
             bool isFinish = false;
-            if (DateTime.Now > DateTime.Parse(order._fields["pay_success_time"].ToString()).AddDays(int.Parse(course._fields["cost_days"].ToString())))
+            if (DateTime.Now > DateTime.Parse(order._fields["pay_success_time"].ToString()).AddDays(int.Parse(course._fields["cost_days"].ToString()))
+                .AddDays(int.Parse(course._fields["gap_days"].ToString())))
             {
                 isFinish = true;
             }
