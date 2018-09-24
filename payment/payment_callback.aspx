@@ -22,11 +22,22 @@
         {
 
             order.Status = 2;
+            try
+            {
+                OnlineOrder onlineOrder = new OnlineOrder(int.Parse(order._fields["order_product_id"].ToString()));
+                onlineOrder.SetPaySuccess(DateTime.Now);
+
+            }
+            catch
+            {
+
+            }
         }
         else
         {
             order.Status = -1;
         }
+        
     }
 </script>
 <xml>

@@ -43,6 +43,12 @@ public class OnlineOrder
             new string[,] { { "id", "int", _fields["id"].ToString() } }, Util.conStr);
     }
 
+    public void SetPaySuccess(DateTime paySuccessTime)
+    {
+        DBHelper.UpdateData("orders", new string[,] { { "state", "int", "2" }, { "pay_time", "datetime", paySuccessTime.ToString() } },
+            new string[,] { { "id", "int", _fields["id"].ToString() } }, Util.conStr);
+    }
+
     public static OnlineOrder[] GetOrders(string openId)
     {
         DataTable dt = DBHelper.GetDataTable(" select * from orders where owner = '" + openId.Trim().Replace("'", "").Trim() + "' order by [id] desc ");
