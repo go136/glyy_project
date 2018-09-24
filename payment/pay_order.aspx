@@ -20,9 +20,11 @@
                 && otherOrder._fields["valid"].ToString().Equals("1") 
                 && !otherOrder._fields["state"].ToString().Equals("2"))
             {
+                Response.Write(orderId.ToString() + ":" + otherOrder._fields["id"].ToString());
                 //otherOrder.Cancel();
             }
         }
+        Response.End();
 
         OnlineOrder order = new OnlineOrder(orderId);
         if (order._fields["state"].ToString().Equals("2") || order._fields["valid"].ToString().Equals("0"))
