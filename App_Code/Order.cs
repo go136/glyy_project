@@ -79,6 +79,13 @@ public class Order
         }
     }
 
+    public bool GetPaymentResult()
+    {
+        bool result = false;
+        //DBHelper.GetDataTable(" select top 1 * from weixin_payment_orders where order_product_id = '" + _fields["id"].ToString().Trim() + "' order by order_out_trade_no desc")
+        return result;
+    }
+
     public static int CreateOrder(
         string outTradeNo, 
         string appId, 
