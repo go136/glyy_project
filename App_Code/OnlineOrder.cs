@@ -37,6 +37,12 @@ public class OnlineOrder
   
     }
 
+    public void SetPayTime(DateTime payTime)
+    {
+        DBHelper.UpdateData("orders", new string[,] { { "state", "int", "1" }, { "pay_time", "datetime", payTime.ToString() } },
+            new string[,] { { "id", "int", _fields["id"].ToString() } }, Util.conStr);
+    }
+
     public static OnlineOrder[] GetOrders(string openId)
     {
         DataTable dt = DBHelper.GetDataTable(" select * from orders where owner = '" + openId.Trim().Replace("'", "").Trim() + "' order by [id] desc ");

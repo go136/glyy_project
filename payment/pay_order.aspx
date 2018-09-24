@@ -13,6 +13,7 @@
         token = Util.GetSafeRequestValue(Request, "token", "");
         string openId = WeixinUser.CheckToken(token);
         OnlineOrder order = new OnlineOrder(orderId);
+        order.SetPayTime(DateTime.Now);
         Course course = new Course(int.Parse(order._fields["course_id"].ToString()));
         double realPay = double.Parse(order._fields["real_pay"].ToString().Trim());
 
