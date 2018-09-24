@@ -7,6 +7,11 @@
         string token = Util.GetSafeRequestValue(Request, "token", "");
         int orderId = int.Parse(Util.GetSafeRequestValue(Request, "orderid", "0"));
         OnlineOrder order = new OnlineOrder(orderId);
+        string openId = WeixinUser.CheckToken(token);
+        if (!order._fields["ownew"].ToString().Trim().Equals(openId.Trim()))
+        {
+            Response.End();
+        }
         if (order._fields["state"].ToString().Equals("2"))
         {
             Response.Write("支付成功");

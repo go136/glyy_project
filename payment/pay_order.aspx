@@ -12,12 +12,28 @@
         orderId = int.Parse(Util.GetSafeRequestValue(Request, "orderid", "0"));
         token = Util.GetSafeRequestValue(Request, "token", "");
         string openId = WeixinUser.CheckToken(token);
+        
+        OnlineOrder[] orders = OnlineOrder.GetOrders(openId);
+        foreach (OnlineOrder otherOrder in orders)
+        {
+            if (!otherOrder._fields["id"].ToString().Equals(orderId.ToString()) 
+                && otherOrder._fields["valid"].ToString().Equals("1") 
+                && !otherOrder._fields["state"].ToString().Equals("2"))
+            {
+                otherOrder.Cancel();
+            }
+        }
+
         OnlineOrder order = new OnlineOrder(orderId);
         if (order._fields["state"].ToString().Equals("2") || order._fields["valid"].ToString().Equals("0"))
         {
             Response.End();
         }
         order.SetPayTime(DateTime.Now);
+
+        
+
+
         Course course = new Course(int.Parse(order._fields["course_id"].ToString()));
         double realPay = double.Parse(order._fields["real_pay"].ToString().Trim());
 
