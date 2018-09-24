@@ -9,8 +9,8 @@
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        orderId = int.Parse(Util.GetSafeRequestValue(Request, "orderid", "0"));
-        token = Util.GetSafeRequestValue(Request, "token", "");
+        orderId = int.Parse(Util.GetSafeRequestValue(Request, "orderid", "8"));
+        token = Util.GetSafeRequestValue(Request, "token", "789fbaed2d9c4fc9133401881ba4e6ae13a4c068e7082ce70e53ac8d7304bee51a1089db");
         string openId = WeixinUser.CheckToken(token);
         
         OnlineOrder[] orders = OnlineOrder.GetOrders(openId);
@@ -20,7 +20,7 @@
                 && otherOrder._fields["valid"].ToString().Equals("1") 
                 && !otherOrder._fields["state"].ToString().Equals("2"))
             {
-                otherOrder.Cancel();
+                //otherOrder.Cancel();
             }
         }
 
