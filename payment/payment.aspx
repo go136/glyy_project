@@ -34,7 +34,8 @@
             if (Request["state"] == null)
             {
                 string productId = Util.GetSafeRequestValue(Request, "product_id", "0");
-                string callBackUrl = Util.GetSafeRequestValue(Request, "callback", "payment_get_result.aspx?orderid=" + productId.Trim()); //(Request["callback"] == null) ? "" : Request["callback"].Trim();
+                string callBackUrl = Util.GetSafeRequestValue(Request, "callback", "payment_get_result.aspx?token=" 
+                    + Util.GetSafeRequestValue(Request, "token", "") + "&orderid=" + productId.Trim()); //(Request["callback"] == null) ? "" : Request["callback"].Trim();
 
                 if (Request["product_id"] != null)
                     Session["product_id"] = Request["product_id"];
