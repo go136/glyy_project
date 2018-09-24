@@ -8,7 +8,7 @@
         int orderId = int.Parse(Util.GetSafeRequestValue(Request, "orderid", "0"));
         OnlineOrder order = new OnlineOrder(orderId);
         string openId = WeixinUser.CheckToken(token);
-        if (!order._fields["ownew"].ToString().Trim().Equals(openId.Trim()))
+        if (!order._fields["owner"].ToString().Trim().Equals(openId.Trim()))
         {
             Response.End();
         }
