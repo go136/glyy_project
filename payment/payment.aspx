@@ -48,7 +48,9 @@
                         Response.Write("Invalid token");
                         Response.End();
                     }
-                    if (int.Parse(order._fields["real_pay"].ToString().Trim()) != int.Parse(Request["total_fee"].Trim()))
+                    int totalFee = int.Parse(Request["total_fee"].Trim());
+                    int realPay = (int)Math.Round(100 * double.Parse(order._fields["real_pay"].ToString().Trim()), 0);
+                    if (totalFee != realPay)
                     {
                         Response.Write(order._fields["real_pay"].ToString().Trim() + "!" + Request["total_fee"].Trim());
                         Response.Write("Fee wrong");
