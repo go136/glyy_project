@@ -10,10 +10,6 @@
 
 </head>
 <body bgcolor=#FFFFFF alink=#333333 vlink=#333333 link=#333333 topmargin=0 leftmargin=0 onLoad="init()">
-<!-- <div class="headerT ">
-    <div class="mtitle">课程中心</div>
-    <div class="curCart" id="curCart"></div>
-</div> -->
 <div class="explorerdiv">
     <form action="<#ZC_BLOG_HOST#>" method="post" name="creator" enctype="multipart/form-data">
         筛选：<select name="province" onChange = "select()"></select>　
@@ -24,7 +20,7 @@
 <div class="line1a"></div>
 <div class="curList">
     <ul>
-        <li><!--  class="myChange" -->
+        <!-- <li> class="myChange"
             <dl>
                 <dt>
                     <h2>入门1系列</h2>
@@ -32,7 +28,7 @@
                         适合人群 掌握基本词汇，中学水品 <br>
                         词汇要求 1500 - 3000
                     </span>
-                    <a class="chage">选择</a><!-- 已选 -->
+                    <a class="chage">选择</a>已选
                 </dt>
                 <dd>
                     <p>
@@ -49,111 +45,7 @@
                     </p>
                 </dd>
             </dl>
-        </li>
-        <li>
-            <dl>
-                <dt>
-                    <h2>入门1系列</h2>
-                    <span>
-                        适合人群 掌握基本词汇，中学水品 <br>
-                        词汇要求 1500 - 3000
-                    </span>
-                    <a class="chage">选择</a>
-                </dt>
-                <dd>
-                    <p>
-                        <strong>伊索寓言</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                    <p>
-                        <strong>奥斯卡·王尔德精选故事集合</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                    <p>
-                        <strong>格林童话</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                </dd>
-            </dl>
-        </li>
-        <li>
-            <dl>
-                <dt>
-                    <h2>入门1系列</h2>
-                    <span>
-                        适合人群 掌握基本词汇，中学水品 <br>
-                        词汇要求 1500 - 3000
-                    </span>
-                    <a class="chage">选择</a>
-                </dt>
-                <dd>
-                    <p>
-                        <strong>伊索寓言</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                    <p>
-                        <strong>奥斯卡·王尔德精选故事集合</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                    <p>
-                        <strong>格林童话</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                </dd>
-            </dl>
-        </li>
-        <li>
-            <dl>
-                <dt>
-                    <h2>入门1系列</h2>
-                    <span>
-                        适合人群 掌握基本词汇，中学水品 <br>
-                        词汇要求 1500 - 3000
-                    </span>
-                    <a class="chage">选择</a>
-                </dt>
-                <dd>
-                    <p>
-                        <strong>伊索寓言</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                    <p>
-                        <strong>奥斯卡·王尔德精选故事集合</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                    <p>
-                        <strong>格林童话</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                </dd>
-            </dl>
-        </li>
-        <li>
-            <dl>
-                <dt>
-                    <h2>入门1系列</h2>
-                    <span>
-                        适合人群 掌握基本词汇，中学水品 <br>
-                        词汇要求 1500 - 3000
-                    </span>
-                    <a class="chage">选择</a>
-                </dt>
-                <dd>
-                    <p>
-                        <strong>伊索寓言</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                    <p>
-                        <strong>奥斯卡·王尔德精选故事集合</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                    <p>
-                        <strong>格林童话</strong>
-                        <small>甘蓝精选</small>
-                    </p>
-                </dd>
-            </dl>
-        </li>
+        </li>-->
     </ul>
 </div>
 <footer>
@@ -161,11 +53,11 @@
         <a href="">立即购买</a>
         <small>快去选择你喜爱的书单吧</small>
     </div>
-    <div class="buy">
+    <!-- <div class="buy">
         <a href="payment-确认订单支付.html">立即购买</a>
         <strong>129<small>元/期</small></strong>
         <span>原价149元</span>
-    </div>
+    </div> -->
 </footer>
 
 <script language="javascript">
@@ -234,16 +126,10 @@
 <script src="../js/jquery.reveal.js"></script>
 <script>
     $(function() {
-        $(".chage").click(function() {
+        /*$(".chage").click(function() {
             var index = $(".chage").index(this);
-            if($(".curList ul").find("li").eq(index).hasClass("myChange")) {
-                $(".curList ul").find("li").eq(index).removeClass("myChange");
-                $(".chage").eq(index).text("选择");
-            } else {
-                $(".curList ul").find("li").eq(index).addClass("myChange");
-                $(".chage").eq(index).text("已选");
-            }
-
+            $(".curList ul").find("li").eq(index).addClass("myChange").siblings().removeClass("myChange");
+            $(".chage").eq(index).text("已选").parent().parent().parent("li").siblings().find(".chage").text("选择");
             if($(".curList ul").find("li").hasClass("myChange")) {
                 $(".noBuy").hide();
                 $(".buy").show();
@@ -251,7 +137,103 @@
                 $(".noBuy").show();
                 $(".buy").hide();
             }
-        })
+        })*/
+        //课程列表
+        var url = "http://cabage-english.chinacloudsites.cn";
+        var myToken = "?token=8a2a94246fda8cfa73443e06640f8cc847e8467b621a59e4b4baaf289ed77be92ffab8cc"
+        //$("#s1").click(function() {
+            $.ajax({
+                type: "get",
+                /*async: true,*/
+                url: url+"/api/get_select_courses.aspx"+myToken,
+                data: {},
+                dataType: "json",
+                /*jsonp: "callback",*/
+                success: function(data) {//请求成功完成后要执行的方法 each循环 使用$.each方法遍历返回的数据date
+                    //console.log(data);
+                    $(".curList").find("li").remove();
+                    $.each(data.courses, function (n, value) {
+                        var myPrice = value.price-value.discount;
+                        $(".curList").find("ul").append(
+                            "<li><dl>"
+                            +"<dt>"
+                            +"<h2>"+ value.title +"</h2>"
+                            +"<span>"
+                            + value.description +"<br>"
+                            + value.sort +"&nbsp;" + value.level
+                            +"</span>"
+                            +"<a class='chage'>选择</a>"
+                            +"<i>"+ value.id +"</i>"
+                            +"</dt>"
+                            +"<dd>"
+                            +"<p>"
+                            +"<strong>"+ value.jx1 +"</strong>"
+                            +"<small>甘蓝精选</small>"
+                            +"</p>"
+                            +"<p>"
+                            +"<strong>"+ value.jx2 +"</strong>"
+                            +"<small>甘蓝精选</small>"
+                            +"</p>"
+                            +"<p>"
+                            +"<strong>"+ value.jx3 +"</strong>"
+                            +"<small>甘蓝精选</small>"
+                            +"</p>"
+                            +"</dd>"
+                            +"</dl></li>"
+                        );
+                        // 价格
+                        $(".curList").find("ul li").find(".chage").click(function() {
+                            var index = $(".chage").index(this);
+                            $(".curList ul").find("li").eq(index).addClass("myChange").siblings().removeClass("myChange");
+                            $(".chage").eq(index).text("已选").parent().parent().parent("li").siblings().find(".chage").text("选择");
+                            var myId = $(".curList").find("ul li").find("i").eq(index).text();
+                            console.log(myId);
+                            $.ajax({
+                              type: "get",
+                              url: url+"/api/get_course_price.aspx"+myToken,
+                              data: {course_id:myId},
+                              dataType: "json",
+                              success: function(data) {
+                                var salePrice = data.info[0].price - data.info[0].discount;
+                                if($(".curList ul").find("li").hasClass("myChange")) {
+                                    $(".noBuy").hide();
+                                    $(".buy").remove();
+                                    $("footer").append(
+                                        "<div class='buy'><a href='payment-确认订单支付.html?course_id="+ data.info[0].course_id +"'>立即购买</a><strong>"+ salePrice +"<small>元/期</small></strong><span>原价"+ data.info[0].price +"</span></div>"
+                                    );
+                                } else {
+                                    $(".noBuy").show();
+                                    $(".buy").hide();
+                                }
+                                  /*$.each(data, function (n, value) {
+                                    //console.log(value.price);
+                                    var salePrice = value.price - value.discount;
+                                    if(myId == value.class_id) {
+                                        if($(".curList ul").find("li").hasClass("myChange")) {
+                                            $(".noBuy").hide();
+                                            $(".buy").remove();
+                                            $("footer").append(
+                                                "<div class='buy'><a href='payment-确认订单支付.html?class_id="+ value.class_id +"'>立即购买</a><strong>"+ salePrice +"<small>元/期</small></strong><span>原价"+ value.price +"</span></div>"
+                                            );
+                                        } else {
+                                            $(".noBuy").show();
+                                            $(".buy").hide();
+                                        }
+                                    }
+                                  })*/
+                              },
+                              error: function(e) {
+                                  alert("error");
+                              }
+                            })
+                        })
+                    })
+                },
+                error: function(e) {
+                    alert("error");
+                }
+            })
+        //})
     })
 </script>
 </body>
