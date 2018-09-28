@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>完成支付</title>
+
+  <link rel="stylesheet" href="../stylesheet/payment.css" type="text/css"/>
+  <script type="text/javascript" src="../js/jquery-1.8.2.min.js" ></script>
+
+</head>
+
+<body class="success">
+<!--头部  star-->
+<header style="color:#fff">
+    <span>完成支付</span>
+</header>
+<!--头部 end-->
+<!--内容 star-->
+<div class="contaniner fixed-cont">
+  <div class="img"><img src="../img/payment/success.jpg" alt=""></div>
+  <div class="stl">
+    <p class="bh">
+      您的订单（<span></span>）已支付成功。
+    </p>
+    <p>
+      您可以在 <a href="" class="blue">我的订单</a> 中查看或者修改您的订单。
+    </p>
+    <p>
+      <button>完成<small id="time"></small></button>
+    </p>
+  </div>
+</div>
+<!--内容 end-->
+<script type="text/javascript">
+  var int = setInterval("clock()",1000);
+  var num = 1000;
+  function clock() {
+    num > 0 ? num-- : clearInterval(int);
+    document.getElementById("time").innerHTML=num+"秒";
+    if(num==0) {
+      window.location.href="course课程中心.html";
+    }
+  }
+  $("button").click(function() {
+    window.location.href="course课程中心.html";
+  })
+
+  var url = "http://cabage-english.chinacloudsites.cn";
+  var myToken = "?token=8a2a94246fda8cfa73443e06640f8cc847e8467b621a59e4b4baaf289ed77be92ffab8cc";
+  // 获取订单编号
+  $.ajax({
+      type: "get",
+      url: url+"/api/get_orders.aspx"+myToken,
+      data: {},
+      dataType: "json",
+      success: function(data) {
+        //console.log(data.orders[0].id);
+        $(".bh").find("span").text(data.orders[0].id);
+      },
+      error: function(e) {
+          alert("error");
+      }
+  })
+</script>
+</body>
+</html>

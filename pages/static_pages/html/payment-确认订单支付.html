@@ -26,35 +26,36 @@
     </dt>
     <dd>
       <p class="list">
-        <span>甘蓝阅读 by 百词斩40期 高阶层1</span>
+        <span><!-- 甘蓝阅读 by 百词斩40期 高阶层1 --></span>
         <strong>X 1</strong>
       </p>
       <p class="myChange">
         <span>已选：甘蓝40期高阶</span>
-        <strong>￥ 129.00</strong>
+        <strong>￥ <em></em></strong>
       </p>
     </dd>
   </dl>
   <div class="stl">
-    <p>
+    <p class="all">
       <strong>商品总价</strong>
-      <span>￥ 129.00</span>
+      <span>￥ <em></em></span>
     </p>
-    <p>
+    <p class="pos">
       <strong>邮费<small class="red">（满50包邮）</small></strong>
-      <span class="blue">￥ 0.00</span>
+      <span class="blue">￥ <em>0</em></span>
     </p>
-    <p>
+    <p class="sale">
       <strong>优惠</strong>
-      <span class="red">-￥ 0.00</span>
+      <span class="red">-￥ <em>0</em></span>
     </p>
   </div>
   <div class="info">
     <p>
       给卖家留言：<input type="text" placeholder="在这里说明您的要求哦~~">
     </p>
-    <p>
+    <p class="sale">
       优惠卷：
+      <span class="blue"></span>
       <img src="../img/payment/right.png" alt="">
     </p>
   </div>
@@ -62,35 +63,143 @@
   <div class="pay">
     <ul class="show">
       <li><label><img src="../img/payment/weixin.png" >微信支付<input name="Fruit" type="radio" value="" checked/><span></span></label> </li>
-        <!-- <li><label><img src="../img/payment/zhifubao.png" >支付宝支付<input name="Fruit" type="radio" value="" /><span></span></label> </li>
-        <li><label><img src="../img/payment/yue.png" >余额支付<input name="Fruit" type="radio" value="" /><span></span></label> </li>
-        <li class="center"><a href="#" onClick="showHideCode()">查看更多支付方式↓</a></li> -->
     </ul>
-    <!-- <div class="showList" id = "showdiv" style="display:none;">
-      <li><label><img src="../img/payment/yinhang.png" >银行卡<input name="Fruit" type="radio" value="" /><span></span></label> </li>
-            <li><label><img src="../img/payment/weixin.png" >添加更多<input name="Fruit" type="radio" value=""/><span></span></label> </li>
-
-            <li style="background:none" ></li>
-    </div> -->
   </div>
     <!--支付 end-->
-
-
 </div>
-
-
 <footer>
-    <a href="">付款</a>
-    <strong>129<small>元</small></strong>
+    <a id="pay">付款</a>
+    <small>元</small>
+    <strong>129</strong>
     <span>实付</span>
 </footer>
 <!--内容 end-->
 
+<!-- 优惠卷列表 -->
+<div class="saleList">
+  <ul>
+    <!-- <li>优惠卷1</li> -->
+  </ul>
+</div>
+
 
 <script type="text/javascript">
-function showHideCode(){
-  $("#showdiv").toggle();
-}
+  function GetQueryString(name){
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r != true) return unescape(r[2]);
+    return null;
+  }
+  var myClassId = GetQueryString("course_id");
+  var url = "http://cabage-english.chinacloudsites.cn";
+  var myToken = "?token=8a2a94246fda8cfa73443e06640f8cc847e8467b621a59e4b4baaf289ed77be92ffab8cc";
+  // 获取课程信息
+  $.ajax({
+      type: "get",
+      /*async: true,*/
+      url: url+"/api/get_course_byone.aspx"+myToken,
+      data: {id:myClassId},
+      dataType: "json",
+      /*jsonp: "callback",*/
+      success: function(data) {
+        console.log(data.title);
+        $(".list").find("span").text(data.title);
+        $(".myChange").find("span").text("已选："+data.description);
+        $(".clas").find("img").attr("src","https://newtimeenglishstorage.blob.core.chinacloudapi.cn/content/climg.png")
+      },
+      error: function(e) {
+          alert("error");
+      }
+  })
+
+  // 获取价格
+  $.ajax({
+      type: "get",
+      /*async: true,*/
+      url: url+"/api/get_course_price.aspx"+myToken,
+      data: {course_id:myClassId},
+      dataType: "json",
+      /*jsonp: "callback",*/
+      success: function(data) {
+        var salePrice = data.info[0].price - data.info[0].discount;
+        $(".myChange").find("strong em").text(salePrice);
+        $(".stl .all").find("span em").text(salePrice);
+        $("footer").find("strong").text(salePrice);
+      },
+      error: function(e) {
+          alert("error");
+      }
+  })
+
+  // 获取优惠卷列表
+  $.ajax({
+      type: "get",
+      /*async: true,*/
+      url: url+"/api/get_coupons.aspx"+myToken,
+      data: {id:myClassId},
+      dataType: "json",
+      /*jsonp: "callback",*/
+      success: function(data) {
+        if(!$.isArray(data.coupons)){
+            $(".sale").find(".blue").text("无优惠卷可用");
+        }else if(data.coupons.length<1){
+            $(".sale").find(".blue").text("无优惠卷可用");
+        }else{
+            $(".info").find(".sale").find("span").text(data[0].coupon_id);
+            $(".stl").find(".sale").find("span em").text(data[0].coupon_discount);
+            var posFir = $(".stl").find(".sale").find("span em").text();
+            var ori = $(".myChange").find("strong em").text();
+            $("footer").find("strong").text(ori-posFir);
+            $(".info").click(function() {
+              $(".saleList").show();
+              $(".saleList").find("ul li").remove();
+              $.each(data, function (n, value) {
+                //console.log(value.coupon_id);
+                if(value.coupon_status >= 0) {
+                  $(".saleList").find("ul").append(
+                    "<li value='"+ value.coupon_discount +"'>"+ value.coupon_id +"</li>"
+                  )
+                }
+              })
+              $(".saleList").find("ul").on("click","li",function() {
+                var index = $(".saleList").find("ul li").index(this);
+                //console.log(index);
+                var pos = $(".saleList").find("ul li").eq(index).val();
+                //console.log(pos);
+                $(".saleList").hide();
+                $(".sale").find(".blue").text(pos);
+                $(".stl").find(".sale").find("span em").text(pos);
+                var net = ori-pos;
+                $("footer").find("strong").text(net);
+              })
+            })
+        }
+        // 无优惠卷可用
+
+      },
+      error: function(e) {
+          alert("error");
+      }
+  })
+
+  // 支付
+  $("#pay").click(function() {
+      $.ajax({
+          type: "get",
+          /*async: true,*/
+          url: url+"/api/place_order.aspx"+myToken,
+          data: {courseid:myClassId},
+          dataType: "json",
+          /*jsonp: "callback",*/
+          success: function(data) {
+            console.log(data.order_id);
+            $.get(url+"/payment/pay_order.aspx",{order_id:data.order_id,token:myToken})
+          },
+          error: function(e) {
+              alert("error");
+          }
+      })
+  })
 </script>
 
 </body>

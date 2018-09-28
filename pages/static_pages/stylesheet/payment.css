@@ -168,6 +168,7 @@ img {
   line-height: 30px;
   padding-bottom: 0;
   line-height: 30px;
+  cursor: pointer;
 }
 .info p {
   overflow: hidden;
@@ -182,7 +183,7 @@ img {
 }
 .pay {
   width:100%;
-  height:300px;
+  /* height:300px; */
   position:relative;
   background-color: #fff;
 }
@@ -276,7 +277,7 @@ footer {
     width: 100%;
     border-top: 1px solid #eee;
 }
-footer a,footer strong,footer span {
+footer a,footer strong,footer span,footer small {
     float: right;
 }
 footer a {
@@ -288,13 +289,70 @@ footer a {
 footer strong {
     color: #ff6345;
     font-size: 24px;
-    margin-right: 4%;
 }
-footer strong small {
+footer small {
+    color: #ff6345;
+    margin-right: 4%;
+    margin-left: 1%;
     font-size: 14px;
+    margin-top: 3px;
 }
 footer span {
     color: #333;
     font-size: 16px;
     margin-right: 4%;
+}
+
+/*完成支付*/
+.success {
+  background-color: #fff;
+}
+.contaniner .img {
+  text-align: center;
+  width: 128px;
+  margin: 30% auto 0;
+}
+.success .stl p {
+  text-align: center;
+}
+.success button {
+  display: block;
+  list-style: none;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 4px;
+  border: none;
+  background-color: #64b3ff;
+  width: 150px;
+  margin: 2% auto;
+  padding: 2% 0;
+}
+.success button small {
+  padding-left: 4px;
+}
+
+/* 优惠卷列表 */
+.saleList {
+  position: absolute;
+  height: 20%;
+  max-height: 20%;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0,.5);
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 4%;
+  width: 80%;
+  display: none;
+}
+.saleList li {
+  margin-bottom: 20px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
 }
