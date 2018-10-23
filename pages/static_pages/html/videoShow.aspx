@@ -464,7 +464,7 @@
     function getContent(o) {
         $.ajax({
             type: "post",
-            url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_handout_of_lesson.aspx",
+            url: "https://cabage-english.chinacloudsites.cn/api/get_handout_of_lesson.aspx",
             data: {"lessonid": o},
             success: function (data) {
                 if (data.status == 0) {

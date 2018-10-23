@@ -107,7 +107,7 @@
 
         $.ajax({
             type: "post",
-            url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_courses_sample.aspx",
+            url: "https://cabage-english.chinacloudsites.cn/api/get_courses_sample.aspx",
             data: {},
             dataType: "json",
             success: function (data) {
@@ -142,7 +142,7 @@
     function getcourse_list1(i) {
         $.ajax({
             type: "post",
-            url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
+            url: "https://cabage-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
             data: {"courseid": i},
             dataType: "json",
             success: function (data) {
@@ -154,7 +154,7 @@
     function getcourse_list2(i) {
         $.ajax({
             type: "post",
-            url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
+            url: "https://cabage-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
             data: {"courseid": i},
             dataType: "json",
             success: function (data) {
@@ -166,7 +166,7 @@
     function getcourse_list3(i) {
         $.ajax({
             type: "post",
-            url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
+            url: "https://cabage-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
             data: {"courseid": i},
             dataType: "json",
             success: function (data) {
@@ -287,7 +287,7 @@
                 var course_id = $("#" + course).val();
                 $.ajax({
                     type: "post",
-                    url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
+                    url: "https://cabage-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
                     data: {"courseid": course_id},
                     dataType: "json",
                     success: function (data) {
@@ -338,7 +338,7 @@
                 var course_id = $("#" + course).val();
                 $.ajax({
                     type: "post",
-                    url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
+                    url: "https://cabage-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
                     data: {"courseid": course_id},
                     dataType: "json",
                     success: function (data) {
@@ -388,7 +388,7 @@
                 var course_id = $("#" + course).val();
                 $.ajax({
                     type: "post",
-                    url: "https://weixin-new-time-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
+                    url: "https://cabage-english.chinacloudsites.cn/api/get_lessons_of_course.aspx",
                     data: {"courseid": course_id},
                     dataType: "json",
                     success: function (data) {
