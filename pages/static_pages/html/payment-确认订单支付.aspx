@@ -27,7 +27,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head runat="server">
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>支付订单</title>
 
