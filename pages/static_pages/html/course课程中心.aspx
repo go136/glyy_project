@@ -227,7 +227,7 @@
                                     $(".noBuy").hide();
                                     $(".buy").remove();
                                     $("footer").append(
-                                        "<div class='buy'><a href='payment-确认订单支付.html?courseid="+ data.info[0].courseid +"'>立即购买</a><strong>"+ salePrice +"<small>元/期</small></strong><span>原价"+ data.info[0].price +"</span></div>"
+                                        "<div class='buy'><a href='payment-确认订单支付.aspx?courseid="+ data.info[0].courseid +"'>立即购买</a><strong>"+ salePrice +"<small>元/期</small></strong><span>原价"+ data.info[0].price +"</span></div>"
                                     );
                                 } else {
                                     $(".noBuy").show();
