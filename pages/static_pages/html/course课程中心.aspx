@@ -1,4 +1,4 @@
-
+﻿
 <%@ Page Language="C#" %>
 
 <!DOCTYPE html>
@@ -26,8 +26,8 @@
     }
 </script>
 
-<html lang="en">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
     <meta charset="UTF-8">
     <title>课程中心</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
