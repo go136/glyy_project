@@ -115,7 +115,7 @@
     if(r != true) return unescape(r[2]);
     return null;
   }
-  var myClassId = GetQueryString("course_id");
+  var myClassId = GetQueryString("courseid");
   var user_token = "<%=userToken%>";
   var url = "https://cabage-english.chinacloudsites.cn";
   var myToken = "?token="+user_token;
@@ -143,7 +143,7 @@
       type: "get",
       /*async: true,*/
       url: url+"/api/get_course_price.aspx"+myToken,
-      data: {course_id:myClassId},
+      data: {courseid:myClassId},
       dataType: "json",
       /*jsonp: "callback",*/
       success: function(data) {

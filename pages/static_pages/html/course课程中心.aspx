@@ -219,7 +219,7 @@
                             $.ajax({
                               type: "get",
                               url: url+"/api/get_course_price.aspx"+myToken,
-                              data: {course_id:myId},
+                              data: {courseid:myId},
                               dataType: "json",
                               success: function(data) {
                                 var salePrice = data.info[0].price - data.info[0].discount;
@@ -227,7 +227,7 @@
                                     $(".noBuy").hide();
                                     $(".buy").remove();
                                     $("footer").append(
-                                        "<div class='buy'><a href='payment-确认订单支付.html?course_id="+ data.info[0].course_id +"'>立即购买</a><strong>"+ salePrice +"<small>元/期</small></strong><span>原价"+ data.info[0].price +"</span></div>"
+                                        "<div class='buy'><a href='payment-确认订单支付.html?courseid="+ data.info[0].courseid +"'>立即购买</a><strong>"+ salePrice +"<small>元/期</small></strong><span>原价"+ data.info[0].price +"</span></div>"
                                     );
                                 } else {
                                     $(".noBuy").show();
