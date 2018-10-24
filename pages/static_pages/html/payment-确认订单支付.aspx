@@ -219,7 +219,7 @@
           /*jsonp: "callback",*/
           success: function(data) {
             console.log(data.order_id);
-            $.get(url+"/payment/pay_order.aspx",{orderid:data.order_id,token:myToken})
+            $.get(url+"/payment/pay_order.aspx",{orderid:data.order_id,token:user_token})
           },
           error: function(e) {
               alert("error");
