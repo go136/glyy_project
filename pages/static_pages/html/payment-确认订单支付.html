@@ -191,7 +191,8 @@
           data: {courseid:myClassId},
           dataType: "json",
           /*jsonp: "callback",*/
-          success: function(data) {
+          success: function (data) {
+              alert("start to pay flow");
             console.log(data.order_id);
               //$.get(url+"/payment/pay_order.aspx",{order_id:data.order_id,token:myToken})
             var jump_url = url + "/payment/pay_order.aspx?orderid=" + data.order_id + "&token=" + myToken;
