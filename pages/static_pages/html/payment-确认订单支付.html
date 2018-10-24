@@ -194,7 +194,9 @@
           success: function(data) {
             console.log(data.order_id);
               //$.get(url+"/payment/pay_order.aspx",{order_id:data.order_id,token:myToken})
-            window.location.href = url + "/payment/pay_order.aspx?orderid=" + data.order_id + "&token=" + myToken;
+            var jump_url = url + "/payment/pay_order.aspx?orderid=" + data.order_id + "&token=" + myToken;
+            alert(jump_url);
+            window.location.href = jump_url;
           },
           error: function(e) {
               alert("error");
