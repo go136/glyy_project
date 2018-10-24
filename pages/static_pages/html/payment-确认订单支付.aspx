@@ -220,7 +220,7 @@
           success: function(data) {
             console.log(data.order_id);
               //$.get(url+"/payment/pay_order.aspx",{orderid:data.order_id,token:user_token})
-            var jump_url = url + "/payment/pay_order.aspx?orderid=" + data.order_id + "&token=" + myToken;
+            var jump_url = url + "/payment/pay_order.aspx" + myToken + "&orderid=" + data.order_id 
             window.location.href = jump_url;
           },
           error: function(e) {
