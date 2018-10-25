@@ -251,14 +251,14 @@
                                   })*/
                               },
                               error: function(e) {
-                                  alert("error");
+                                  alert("error1");
                               }
                             })
                         })
                     })
                 },
                 error: function(e) {
-                    alert("error");
+                    alert("error2");
                 }
             })
         //})
