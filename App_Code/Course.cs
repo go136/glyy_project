@@ -92,7 +92,7 @@ public class Course
         Course[] courseArray = new Course[dt.Rows.Count];
         for (int i = 0; i < dt.Rows.Count; i++)
         {
-            courseArray[i] = new Course(int.Parse(dt.Rows[i]["id"].ToString()));
+            courseArray[i] = new Course(int.Parse(dt.Rows[i]["course_id"].ToString()));
         }
         dt.Dispose();
         return courseArray;
