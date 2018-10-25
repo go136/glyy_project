@@ -45,7 +45,7 @@ public class OnlineOrder
 
     public void SetPaySuccess(DateTime paySuccessTime)
     {
-        DBHelper.UpdateData("orders", new string[,] { { "state", "int", "2" }, { "pay_time", "datetime", paySuccessTime.ToString() } },
+        DBHelper.UpdateData("orders", new string[,] { { "state", "int", "2" }, { "pay_success_time", "datetime", paySuccessTime.ToString() } },
             new string[,] { { "id", "int", _fields["id"].ToString() } }, Util.conStr);
     }
 
