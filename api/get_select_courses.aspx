@@ -18,7 +18,10 @@
             }
             else
             {
-                Response.Write("{\"status\":0, courses:[]}");
+                if (newCourseId != 0)
+                {
+                    Response.Write("{\"status\":0, courses:[]}");
+                }
             }
         }
         if (newCourseId == 0)
