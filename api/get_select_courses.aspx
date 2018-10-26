@@ -4,7 +4,7 @@
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string token = Util.GetSafeRequestValue(Request, "token", "a42f4bd6206a6a76a237697c1d246a3f7ef130de2027db05bb0e19f9c99b5c296d8b8004");
+        string token = Util.GetSafeRequestValue(Request, "token", "2ae547f99b95e6c30e9c17d8d6fce51df5850b221cb97b9337702ff70189061a1b375982");
         string openId = WeixinUser.CheckToken(token);
         Course[] courseArr = Course.GetCoursesForOnPerson(openId);
         int newCourseId = 0;
@@ -14,13 +14,13 @@
             DataTable dt = DBHelper.GetDataTable("select * from course where [id] = " + newCourseId.ToString());
             if (dt.Rows.Count > 0)
             {
-                Response.Write("{\"status\":0, courses:[" + Util.ConvertDataTableToJsonItemArray(dt)[0].Trim() + "]}");
+                Response.Write("{\"status\":0, \"courses\": [" + Util.ConvertDataTableToJsonItemArray(dt)[0].Trim() + "]}");
             }
             else
             {
                 if (newCourseId != 0)
                 {
-                    Response.Write("{\"status\":0, courses:[]}");
+                    Response.Write("{\"status\":0, \"courses\": []}");
                 }
             }
         }
