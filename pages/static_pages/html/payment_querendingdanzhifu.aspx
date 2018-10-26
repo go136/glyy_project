@@ -219,14 +219,23 @@
           dataType: "json",
           /*jsonp: "callback",*/
           success: function(data) {
-             is_finish = data.is_finish;
+            is_finish = data.is_finish;
+            if(is_finish=='False'){
+            	  alert("需要完成您现有的课程后，才能购买新的课程");
+            }else{
+            	doPayment();
+            }
           },
           error: function(e) {
               alert("get_last_course_is_finish 接口错误");
           }
       })
       
-      $.ajax({
+      
+  })
+  
+  function doPayment(){
+  	$.ajax({
           type: "get",
           async: false,
           url: url+"/api/place_order.aspx"+myToken,
@@ -239,9 +248,7 @@
             if (parseInt(data.order_id) < 0) {
                 alert("下订单失败，请稍候在试");
             }
-            else if(is_finish=='False'){
-            	  alert("需要完成您现有的课程后，才能购买新的课程");
-            }
+
             else {
                 var jump_url = url + "/payment/pay_order.aspx" + myToken + "&orderid=" + data.order_id
                 window.location.href = jump_url;
@@ -251,7 +258,7 @@
               alert("error");
           }
       })
-  })
+  }
 </script>
 
 </body>
