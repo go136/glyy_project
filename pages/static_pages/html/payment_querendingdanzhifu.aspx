@@ -210,7 +210,7 @@
 
   // 支付
   $("#pay").click(function() {
-  	  var is_finish = true;
+  	  var is_finish = '';
   	  $.ajax({
           type: "get",
           async: false,
@@ -239,7 +239,7 @@
             if (parseInt(data.order_id) < 0) {
                 alert("下订单失败，请稍候在试");
             }
-            else if(!is_finish){
+            else if(is_finish=='False'){
             	  alert("需要完成您现有的课程后，才能购买新的课程");
             }
             else {
