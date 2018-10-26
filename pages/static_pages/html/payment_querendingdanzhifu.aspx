@@ -215,7 +215,7 @@
           type: "get",
           async: false,
           url: url+"/api/get_last_course_is_finish.aspx"+myToken,
-          data: {token:user_token},
+          //data: {token:user_token},
           dataType: "json",
           /*jsonp: "callback",*/
           success: function(data) {
