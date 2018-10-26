@@ -213,7 +213,7 @@
   	  var is_finish = true;
   	  $.ajax({
           type: "get",
-          async: true,
+          async: false,
           url: url+"/api/get_last_course_is_finish.aspx"+myToken,
           data: {token:user_token},
           dataType: "json",
@@ -228,7 +228,7 @@
       
       $.ajax({
           type: "get",
-          async: true,
+          async: false,
           url: url+"/api/place_order.aspx"+myToken,
           data: {courseid:myClassId},
           dataType: "json",
