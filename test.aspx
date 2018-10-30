@@ -17,7 +17,10 @@
 
         //WeixinUser.CheckToken("17cbbee91ad6fbb4eb63f5a8a420caa7c168a91590e54af9e0b8cd186911ecc368d230f1");
 
-        OnlineOrder.PlaceOrder("abcd", 1, DateTime.Now, 0);
+        //OnlineOrder.PlaceOrder("abcd", 1, DateTime.Now, 0);
+
+
+
         
     }
 </script>
@@ -29,7 +32,14 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        After authorize go to:<a href="authorize.aspx?callback=<%=callBack %>" ><%=Server.UrlDecode(callBack) %></a>
+    <%
+        OnlineOrder[] oArr = OnlineOrder.GetOutTimeOrders();
+        foreach (OnlineOrder order in oArr)
+        {
+            Response.Write(order._fields["id"].ToString() + "<br/>");
+        }
+
+         %>
     </div>
     </form>
 </body>
