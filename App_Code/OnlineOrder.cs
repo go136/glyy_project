@@ -99,7 +99,7 @@ public class OnlineOrder
                         {"ticket_id", "int", ticketId.ToString() },
                         {"ticket_discount_amount", "float", discountAmount.ToString() },
                         {"real_pay", "float", realPayAmount.ToString() },
-                        {"end_date", "datetime", orderDate.AddHours(6).ToString() }
+                        {"end_date", "datetime", orderDate.AddHours(1).ToString() }
                     });
                     if (i == 1)
                     {
@@ -125,4 +125,18 @@ public class OnlineOrder
         dtCourseDuplicate.Dispose();
         return orderId;
     }
+
+
+    public static OnlineOrder[] GetOutTimeOrders()
+    {
+        DataTable dt = DBHelper.GetDataTable(" select * from orders where end_date > '" + DateTime.Now + "' ");
+        OnlineOrder[] orderArr = new OnlineOrder[dt.Rows.Count];
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            orderArr[i] = new OnlineOrder();
+            orderArr[i]._fields = dt.Rows[i];
+        }
+        return orderArr;
+    }
+
 }

