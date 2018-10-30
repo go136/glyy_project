@@ -210,9 +210,34 @@
 
   // 支付
   $("#pay").click(function() {
-      $.ajax({
+  	  var is_finish = '';
+  	  $.ajax({
           type: "get",
-          /*async: true,*/
+          async: false,
+          url: url+"/api/get_last_course_is_finish.aspx"+myToken,
+          //data: {token:user_token},
+          dataType: "json",
+          /*jsonp: "callback",*/
+          success: function(data) {
+            is_finish = data.is_finish;
+            if(is_finish=='False'){
+            	  alert("需要完成您现有的课程后，才能购买新的课程");
+            }else{
+            	doPayment();
+            }
+          },
+          error: function(e) {
+              alert("get_last_course_is_finish 接口错误");
+          }
+      })
+      
+      
+  })
+  
+  function doPayment(){
+  	$.ajax({
+          type: "get",
+          async: false,
           url: url+"/api/place_order.aspx"+myToken,
           data: {courseid:myClassId},
           dataType: "json",
@@ -221,8 +246,9 @@
             console.log(data.order_id);
               //$.get(url+"/payment/pay_order.aspx",{orderid:data.order_id,token:user_token})
             if (parseInt(data.order_id) < 0) {
-                alert("Place order unsuccessful.");
+                alert("下订单失败，请稍候在试");
             }
+
             else {
                 var jump_url = url + "/payment/pay_order.aspx" + myToken + "&orderid=" + data.order_id
                 window.location.href = jump_url;
@@ -232,7 +258,7 @@
               alert("error");
           }
       })
-  })
+  }
 </script>
 
 </body>
