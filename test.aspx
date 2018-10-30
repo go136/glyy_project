@@ -37,6 +37,7 @@
         foreach (OnlineOrder order in oArr)
         {
             Response.Write(order._fields["id"].ToString() + "<br/>");
+            order.Cancel();
         }
 
          %>
