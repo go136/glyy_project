@@ -33,13 +33,11 @@
     <form id="form1" runat="server">
     <div>
     <%
-        OnlineOrder[] oArr = OnlineOrder.GetOutTimeOrders();
-        foreach (OnlineOrder order in oArr)
-        {
-            Response.Write(order._fields["id"].ToString() + "<br/>");
-            order.Cancel();
-        }
+        DataTable dt = DBHelper.GetDataTable("select * from orders where [id] = 23");
 
+        OnlineOrder order = new OnlineOrder();
+        order._fields = dt.Rows[0];
+        order.Cancel();
          %>
     </div>
     </form>

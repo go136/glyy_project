@@ -83,6 +83,16 @@ public class OnlineOrder
 
             dtCourseDuplicate.Dispose();
             dtCourseDuplicate = DBHelper.GetDataTable("  select * from orders where owner = '" + openId.Trim() + "' and [state] in (0, 1) and course_id = " + courseId.ToString());
+
+            foreach (DataRow drCourseDuplicate in dtCourseDuplicate.Rows)
+            {
+                OnlineOrder order = new OnlineOrder(int.Parse(drCourseDuplicate["id"].ToString()));
+                order.Cancel();
+            }
+
+            dtCourseDuplicate = DBHelper.GetDataTable("  select * from orders where owner = '" + openId.Trim() + "' and [state] in (0, 1) and course_id = " + courseId.ToString());
+
+
             if (dtCourseDuplicate.Rows.Count == 0)
             {
                 
